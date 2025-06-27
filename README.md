@@ -11,3 +11,5 @@ Team Leader Name
 
 Phone number(from which money has been sent)
 Transaction ID
+
+Verified
