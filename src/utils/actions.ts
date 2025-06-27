@@ -2,12 +2,15 @@ import { SupabaseResponse, Team } from "@/types";
 import { supabase } from "./supabase";
 
 export const addTeam = async (team: Team): Promise<SupabaseResponse> => {
-  const teamExists = await supabase
+  const { data, error: _error } = await supabase
     .from("preliminary-round")
-    .select("team_name")
+    .select()
     .eq("team_name", team.teamName);
 
-  if (teamExists)
+  if (_error) return { error: _error.message, success: false };
+  console.log(data, _error);
+
+  if (data?.length && data.length > 0)
     return {
       error:
         "Team with this name already exists. Please choose a different name.",

@@ -15,7 +15,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Plus, Trash2, Users, CreditCard, Trophy } from "lucide-react";
+import {
+  Plus,
+  Trash2,
+  Users,
+  CreditCard,
+  Trophy,
+  Eraser,
+  Drone,
+  Ban,
+  Check,
+} from "lucide-react";
 import { toast } from "sonner";
 import { addTeam } from "@/utils/actions";
 import { TeamMember } from "@/types";
@@ -70,6 +80,8 @@ export default function ContestRegistration() {
   const validateForm = () => {
     if (!teamName.trim()) {
       toast("Validation Error", {
+        icon: <Ban />,
+
         description: "Team name is required",
       });
       return false;
@@ -77,6 +89,8 @@ export default function ContestRegistration() {
 
     if (!teamLeaderName.trim()) {
       toast("Validation Error", {
+        icon: <Ban />,
+
         description: "Team leader name is required",
       });
       return false;
@@ -94,6 +108,8 @@ export default function ContestRegistration() {
         !member.phoneNumber.trim()
       ) {
         toast("Validation Error", {
+          icon: <Ban />,
+
           description: `Please fill all fields for member ${i + 1}`,
         });
         return false;
@@ -102,6 +118,8 @@ export default function ContestRegistration() {
 
     if (!bkashNumber.trim()) {
       toast("Validation Error", {
+        icon: <Ban />,
+
         description: "Bkash number is required",
       });
       return false;
@@ -109,6 +127,8 @@ export default function ContestRegistration() {
 
     if (!transactionId.trim()) {
       toast("Validation Error", {
+        icon: <Ban />,
+
         description: "Transaction ID is required",
       });
       return false;
@@ -142,6 +162,7 @@ export default function ContestRegistration() {
 
     if (error) {
       toast(error, {
+        icon: <Ban />,
         description:
           "Something went wrong while registtering, try again after some time.",
       });
@@ -150,6 +171,7 @@ export default function ContestRegistration() {
     }
 
     toast("Registration Successful!", {
+      icon: <Check />,
       description:
         "Your team has been registered. You will receive a confirmation email shortly.",
     });
