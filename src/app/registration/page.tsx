@@ -17,7 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Plus, Trash2, Users, CreditCard, Trophy } from "lucide-react";
 import { toast } from "sonner";
-import { addTeam } from "@/utils/actions";
+import { addTeam } from "@/helper/actions";
 import { TeamMember } from "@/types";
 
 export default function ContestRegistration() {
