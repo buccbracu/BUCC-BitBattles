@@ -19,7 +19,6 @@ export const addTeam = async (team: Team): Promise<SupabaseResponse> => {
 
   const { error } = await supabase.from("preliminary-round").insert({
     team_name: team.teamName,
-    team_leader_name: team.teamLeaderName,
     members: team.members,
     bkash: team.bkash,
     transaction_id: team.transactionId,

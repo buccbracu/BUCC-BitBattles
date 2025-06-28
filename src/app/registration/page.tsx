@@ -15,24 +15,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import {
-  Plus,
-  Trash2,
-  Users,
-  CreditCard,
-  Trophy,
-  Eraser,
-  Drone,
-  Ban,
-  Check,
-} from "lucide-react";
+import { Plus, Trash2, Users, CreditCard, Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { addTeam } from "@/utils/actions";
 import { TeamMember } from "@/types";
 
 export default function ContestRegistration() {
   const [teamName, setTeamName] = useState("");
-  const [teamLeaderName, setTeamLeaderName] = useState("");
   const [members, setMembers] = useState<TeamMember[]>([
     {
       id: "1",
@@ -50,6 +39,13 @@ export default function ContestRegistration() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const addMember = () => {
+    if (members.length >= 3) {
+      return toast.error("Can't add more member!", {
+        description:
+          "Each team can have maximum 3 members and minimum 1 member",
+      });
+    }
+
     const newMember: TeamMember = {
       id: Date.now().toString(),
       name: "",
@@ -79,19 +75,8 @@ export default function ContestRegistration() {
 
   const validateForm = () => {
     if (!teamName.trim()) {
-      toast("Validation Error", {
-        icon: <Ban />,
-
+      toast.error("Validation Error", {
         description: "Team name is required",
-      });
-      return false;
-    }
-
-    if (!teamLeaderName.trim()) {
-      toast("Validation Error", {
-        icon: <Ban />,
-
-        description: "Team leader name is required",
       });
       return false;
     }
@@ -107,9 +92,7 @@ export default function ContestRegistration() {
         !member.personalEmail.trim() ||
         !member.phoneNumber.trim()
       ) {
-        toast("Validation Error", {
-          icon: <Ban />,
-
+        toast.error("Validation Error", {
           description: `Please fill all fields for member ${i + 1}`,
         });
         return false;
@@ -117,18 +100,14 @@ export default function ContestRegistration() {
     }
 
     if (!bkashNumber.trim()) {
-      toast("Validation Error", {
-        icon: <Ban />,
-
+      toast.error("Validation Error", {
         description: "Bkash number is required",
       });
       return false;
     }
 
     if (!transactionId.trim()) {
-      toast("Validation Error", {
-        icon: <Ban />,
-
+      toast.error("Validation Error", {
         description: "Transaction ID is required",
       });
       return false;
@@ -140,7 +119,6 @@ export default function ContestRegistration() {
   const handleSubmit = async (e: React.FormEvent) => {
     console.log({
       teamName,
-      teamLeaderName,
       members,
       bkashNumber,
       transactionId,
@@ -154,15 +132,13 @@ export default function ContestRegistration() {
 
     const { error } = await addTeam({
       teamName,
-      teamLeaderName,
       members,
       bkash: bkashNumber,
       transactionId,
     });
 
     if (error) {
-      toast(error, {
-        icon: <Ban />,
+      toast.error(error, {
         description:
           "Something went wrong while registtering, try again after some time.",
       });
@@ -170,8 +146,7 @@ export default function ContestRegistration() {
       return;
     }
 
-    toast("Registration Successful!", {
-      icon: <Check />,
+    toast.success("Registration Successful!", {
       description:
         "Your team has been registered. You will receive a confirmation email shortly.",
     });
@@ -207,7 +182,7 @@ export default function ContestRegistration() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
                 <div className="space-y-2">
                   <Label htmlFor="teamName">Team Name *</Label>
                   <Input
@@ -215,16 +190,6 @@ export default function ContestRegistration() {
                     placeholder="Enter your team name"
                     value={teamName}
                     onChange={(e) => setTeamName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="teamLeader">Team Leader Name *</Label>
-                  <Input
-                    id="teamLeader"
-                    placeholder="Enter team leader's name"
-                    value={teamLeaderName}
-                    onChange={(e) => setTeamLeaderName(e.target.value)}
                     required
                   />
                 </div>
@@ -327,7 +292,7 @@ export default function ContestRegistration() {
                       <Label>GSuite Email *</Label>
                       <Input
                         type="email"
-                        placeholder="student@university.edu"
+                        placeholder="student@g.bracu.ac.bd"
                         value={member.gsuiteEmail}
                         onChange={(e) =>
                           updateMember(member.id, "gsuiteEmail", e.target.value)
@@ -357,7 +322,7 @@ export default function ContestRegistration() {
                       <Label>Phone Number *</Label>
                       <Input
                         type="tel"
-                        placeholder="+880 1XXXXXXXXX"
+                        placeholder="01XXXXXXXXX"
                         value={member.phoneNumber}
                         onChange={(e) =>
                           updateMember(member.id, "phoneNumber", e.target.value)
@@ -399,7 +364,7 @@ export default function ContestRegistration() {
                   <Input
                     id="bkashNumber"
                     type="tel"
-                    placeholder="+880 1XXXXXXXXX"
+                    placeholder="01XXXXXXXXX"
                     value={bkashNumber}
                     onChange={(e) => setBkashNumber(e.target.value)}
                     required

@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lora.variable} antialiased`}>
         {children}
-        <Toaster />
+        <Toaster richColors />
       </body>
     </html>
   );

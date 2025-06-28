@@ -1,6 +1,5 @@
 export interface Team {
   teamName: string;
-  teamLeaderName: string;
   members: TeamMember[];
   bkash: string;
   transactionId: string;
