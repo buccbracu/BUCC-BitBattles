@@ -1,6 +1,5 @@
-import { AddTeamDTO, EmailType, GetTeamDTO, Team } from "@/types";
+import { EmailType, GetTeamDTO } from "@/types";
 import * as nodemailer from "nodemailer";
-import Mail from "nodemailer/lib/mailer";
 import { registeredMail, verifiedMail } from "./mailTemplate";
 
 const transporter = nodemailer.createTransport({

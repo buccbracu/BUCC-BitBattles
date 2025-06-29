@@ -1,4 +1,4 @@
-import { GetTeamDTO, Team } from "@/types";
+import { GetTeamDTO } from "@/types";
 
 export const registeredMail = (team: Partial<GetTeamDTO>) => {
   return `<div style="font-family: Arial, sans-serif; line-height: 1.6;">
