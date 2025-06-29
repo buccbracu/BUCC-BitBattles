@@ -31,6 +31,7 @@ export const getTeams = async (): Promise<SupabaseResponse<Team[]>> => {
 };
 
 export const addTeam = async (team: AddTeamDTO): Promise<SupabaseResponse> => {
+  // Team with the same name exists
   const { data, error: _error } = await supabase
     .from("preliminary-round")
     .select()
@@ -44,6 +45,30 @@ export const addTeam = async (team: AddTeamDTO): Promise<SupabaseResponse> => {
         "Team with this name already exists. Please choose a different name.",
       success: false,
     };
+
+  // Email check
+  const newMemberEmails = team.members.map((member) => member.gsuiteEmail);
+
+  const { data: allTeams, error: membersError } = await supabase
+    .from("preliminary-round")
+    .select("members");
+
+  if (membersError) return { error: membersError.message, success: false };
+
+  if (allTeams) {
+    const isDuplicateMember = (allTeams as GetTeamDTO[]).some((team) =>
+      team.members.some((member) =>
+        newMemberEmails.includes(member.gsuiteEmail)
+      )
+    );
+
+    if (isDuplicateMember) {
+      return {
+        success: false,
+        error: "A member cannot register for multiple teams.",
+      };
+    }
+  }
 
   const dataToInsert: Partial<GetTeamDTO> = {
     team_name: team.teamName,

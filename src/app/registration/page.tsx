@@ -19,6 +19,7 @@ import { Plus, Trash2, Users, CreditCard, Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { addTeam } from "@/helper/actions";
 import { TeamMember } from "@/types";
+import { InputMask } from "@react-input/mask";
 
 export default function ContestRegistration() {
   const [teamName, setTeamName] = useState("");
@@ -116,6 +117,15 @@ export default function ContestRegistration() {
     return true;
   };
 
+  const checkEmailMask = (email: string) => {
+    console.log(email);
+    if (/.+@.+\.[A-Za-z]+$/.test(email)) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     console.log({
       teamName,
@@ -124,6 +134,19 @@ export default function ContestRegistration() {
       transactionId,
     });
 
+    members.forEach((member) => {
+      if (member.gsuiteEmail.split("@")[1] !== "g.bracu.ac.bd") {
+        toast.error("Invalid GSuite Email");
+      }
+    });
+
+    members.forEach((member) => {
+      if (checkEmailMask(member.personalEmail)) {
+        toast.error("Invalid Personal Email");
+      }
+    });
+
+    return;
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -254,8 +277,11 @@ export default function ContestRegistration() {
 
                     <div className="space-y-2">
                       <Label>Student ID *</Label>
-                      <Input
-                        placeholder="Enter student ID"
+
+                      <InputMask
+                        mask="________"
+                        replacement={{ _: /\d/ }}
+                        component={Input}
                         value={member.studentId}
                         onChange={(e) =>
                           updateMember(member.id, "studentId", e.target.value)
@@ -320,9 +346,12 @@ export default function ContestRegistration() {
 
                     <div className="space-y-2 md:col-span-2 lg:col-span-1">
                       <Label>Phone Number *</Label>
-                      <Input
-                        type="tel"
+
+                      <InputMask
+                        mask="___________"
+                        replacement={{ _: /\d/ }}
                         placeholder="01XXXXXXXXX"
+                        component={Input}
                         value={member.phoneNumber}
                         onChange={(e) =>
                           updateMember(member.id, "phoneNumber", e.target.value)
@@ -361,10 +390,12 @@ export default function ContestRegistration() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="bkashNumber">Bkash Phone Number *</Label>
-                  <Input
-                    id="bkashNumber"
-                    type="tel"
+
+                  <InputMask
+                    mask="___________"
+                    replacement={{ _: /\d/ }}
                     placeholder="01XXXXXXXXX"
+                    component={Input}
                     value={bkashNumber}
                     onChange={(e) => setBkashNumber(e.target.value)}
                     required
