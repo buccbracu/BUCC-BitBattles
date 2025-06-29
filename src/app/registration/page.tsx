@@ -205,7 +205,7 @@ export default function ContestRegistration() {
                   <CardTitle>Team Members</CardTitle>
                   <CardDescription>
                     Add all team members including the team leader. Each
-                    member's information is required.
+                    member&apos;s information is required.
                   </CardDescription>
                 </div>
                 <Badge variant="secondary">
