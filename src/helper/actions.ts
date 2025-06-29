@@ -3,6 +3,7 @@
 import { AddTeamDTO, SupabaseResponse, Team } from "@/types";
 import { supabase } from "./supabase/client";
 import { revalidatePath } from "next/cache";
+import { send } from "./mailer";
 
 export const getTeams = async (): Promise<SupabaseResponse<Team[]>> => {
   const { data, error } = await supabase
@@ -69,15 +70,13 @@ export const updateTeam = async (teamId: string): Promise<SupabaseResponse> => {
       success: false,
     };
 
-  console.log("loadded", data, teamId);
-
   const { error } = await supabase
     .from("preliminary-round")
     .update({ payment_verified: true })
     .eq("id", teamId);
 
   if (error) return { error: error.message, success: false };
-
+  send("abrar.shariar.kabir@g.bracu.ac.bd");
   revalidatePath("/dashboard");
   return {
     error: "",
