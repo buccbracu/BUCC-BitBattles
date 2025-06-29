@@ -1,6 +1,12 @@
 "use server";
 
-import { AddTeamDTO, SupabaseResponse, Team } from "@/types";
+import {
+  AddTeamDTO,
+  EmailType,
+  GetTeamDTO,
+  SupabaseResponse,
+  Team,
+} from "@/types";
 import { supabase } from "./supabase/client";
 import { revalidatePath } from "next/cache";
 import { send } from "./mailer";
@@ -39,14 +45,19 @@ export const addTeam = async (team: AddTeamDTO): Promise<SupabaseResponse> => {
       success: false,
     };
 
-  const { error } = await supabase.from("preliminary-round").insert({
+  const dataToInsert: Partial<GetTeamDTO> = {
     team_name: team.teamName,
     members: team.members,
     bkash: team.bkash,
     transaction_id: team.transactionId,
-  });
+  };
+  const { error } = await supabase
+    .from("preliminary-round")
+    .insert(dataToInsert);
 
   if (error) return { error: error.message, success: false };
+
+  send(dataToInsert, EmailType.REGISTERED);
 
   revalidatePath("/dashboard");
 
@@ -76,7 +87,7 @@ export const updateTeam = async (teamId: string): Promise<SupabaseResponse> => {
     .eq("id", teamId);
 
   if (error) return { error: error.message, success: false };
-  send("abrar.shariar.kabir@g.bracu.ac.bd");
+  send(data[0], EmailType.VERIFIED);
   revalidatePath("/dashboard");
   return {
     error: "",

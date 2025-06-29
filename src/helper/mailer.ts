@@ -1,4 +1,7 @@
+import { AddTeamDTO, EmailType, GetTeamDTO, Team } from "@/types";
 import * as nodemailer from "nodemailer";
+import Mail from "nodemailer/lib/mailer";
+import { registeredMail, verifiedMail } from "./mailTemplate";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -8,13 +11,33 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export async function send(to: string) {
-  const result = await transporter.sendMail({
-    from: "bitbattles@gmail.com",
-    to,
-    subject: "Hello World",
-    text: "Hello World",
-  });
+export async function send(team: Partial<GetTeamDTO>, type: EmailType) {
+  if (team.members === undefined || team.members?.length == 0) {
+    return console.log("Couldn't send email.");
+  }
 
-  console.log(JSON.stringify(result, null, 4));
+  const emailConfig = {
+    from: "bitbattles@gmail.com",
+    to: team.members[0].gsuiteEmail,
+    subject: "",
+    html: "",
+  };
+
+  switch (type) {
+    case EmailType.REGISTERED:
+      emailConfig.subject = "Registration Successful - Bit Battles";
+      emailConfig.html = registeredMail(team);
+      break;
+    case EmailType.VERIFIED:
+      emailConfig.subject = "Verified - Bit Battles";
+      emailConfig.html = verifiedMail(team);
+      break;
+
+    default:
+      break;
+  }
+
+  const result = await transporter.sendMail(emailConfig);
+
+  console.log(result);
 }

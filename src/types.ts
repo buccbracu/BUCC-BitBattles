@@ -35,3 +35,8 @@ export interface SupabaseResponse<T = unknown> {
   success: boolean;
   payload?: T;
 }
+
+export enum EmailType {
+  REGISTERED,
+  VERIFIED,
+}
