@@ -57,7 +57,7 @@ export const addTeam = async (team: AddTeamDTO): Promise<SupabaseResponse> => {
 
   if (error) return { error: error.message, success: false };
 
-  send(dataToInsert, EmailType.REGISTERED);
+  await send(dataToInsert, EmailType.REGISTERED);
 
   revalidatePath("/dashboard");
 
@@ -87,7 +87,7 @@ export const updateTeam = async (teamId: string): Promise<SupabaseResponse> => {
     .eq("id", teamId);
 
   if (error) return { error: error.message, success: false };
-  send(data[0], EmailType.VERIFIED);
+  await send(data[0], EmailType.VERIFIED);
   revalidatePath("/dashboard");
   return {
     error: "",
