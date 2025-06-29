@@ -146,7 +146,6 @@ export default function ContestRegistration() {
       }
     });
 
-    return;
     e.preventDefault();
 
     if (!validateForm()) return;
