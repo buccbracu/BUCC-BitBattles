@@ -12,20 +12,20 @@ export const registeredMail = (team: Partial<GetTeamDTO>) => {
         team.members && team.members[0].name
       }</li>
       <li><strong>Leader's Email (GSuite):</strong> ${
-        team.members && team.members[0].name
+        team.members && team.members[0].gsuiteEmail
       }</li>
       ${
-        team.members &&
-        team.members.length > 1 &&
-        team.members
-          .slice(1, team.members.length)
-          .map(
-            (member, i) =>
-              `<li><strong>Team Member ${i + 1}:</strong> ${member.name} (${
-                member.gsuiteEmail
-              })</li>`
-          )
-          .join("\n")
+        team.members && team.members.length > 1
+          ? team.members
+              .slice(1)
+              .map(
+                (member, i) =>
+                  `<li><strong>Team Member ${i + 1}:</strong> ${member.name} (${
+                    member.gsuiteEmail
+                  })</li>`
+              )
+              .join("\n")
+          : ""
       }
     </ul>
     <p>We are excited to have you with us and wish you the best of luck for the competition!</p>
