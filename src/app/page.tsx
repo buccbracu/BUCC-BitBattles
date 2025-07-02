@@ -392,7 +392,7 @@ export default function ContestRegistration() {
               {/* Main heading */}
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent leading-tight tracking-tight">
-                  Intra BRAC University
+                  BUCC Bit Battles: Intra BRAC University
                 </h1>
                 <h2 className="text-3xl md:text-5xl pb-2 font-bold bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
                   Programming Contest
