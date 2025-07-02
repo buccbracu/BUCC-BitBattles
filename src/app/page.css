@@ -1,0 +1,590 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #3a1e10; /* Updated to match the Sambuca color from specs */
+  color: #efda9b; /* Chalky color for text as per specs */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.App {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+/* Content wrapper for all sections */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the background video covers the entire viewport */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: "Kragx";
+  src: url("/kragx.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Common section styling */
+.section {
+  padding: 80px 5% 60px !important; /* Reduced from 120px 5% 100px */
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh !important; /* Reduced from 100vh */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.section-title {
+  font-family: "Kragx", sans-serif;
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem !important;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe066 10%, #e6b800 45%, #cc9900 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #7a5c13;
+  position: relative;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  padding: 0 10px;
+  animation: floatTitle 4s ease-in-out infinite;
+}
+
+/* Subtle floating animation for the titles */
+@keyframes floatTitle {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 6px;
+  background: linear-gradient(to right, transparent, #ffd700, transparent);
+  border-radius: 3px;
+  animation: glowLine 3s ease-in-out infinite alternate;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ffd700, transparent);
+  border-radius: 1px;
+  animation: glowLine 3s ease-in-out infinite alternate;
+  animation-delay: 0.5s;
+}
+
+@keyframes glowLine {
+  0% {
+    opacity: 0.6;
+    width: 150px;
+  }
+  100% {
+    opacity: 1;
+    width: 200px;
+  }
+}
+
+.section-subtitle {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem !important;
+  text-align: center;
+  margin-bottom: 1rem !important;
+  color: #efda9b;
+}
+
+/* Dark overlay for sections */
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(58, 30, 16, 0.85); /* Sambuca with opacity */
+  z-index: -1;
+}
+
+/* Button styling */
+.button {
+  padding: 12px 24px;
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #a06937 0%, #8a5a2e 50%, #a06937 100%);
+  color: #efda9b;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(160, 105, 55, 0.5);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(160, 105, 55, 0.7);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.5s ease;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+/* Section transitions */
+.section:nth-child(odd) {
+  background-color: rgba(58, 30, 16, 0.7);
+}
+
+.section:nth-child(even) {
+  background-color: rgba(58, 30, 16, 0.85);
+}
+
+/* Section scroll indicators */
+.section-scroll-indicator {
+  position: absolute;
+  bottom: 15px !important;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #a06937;
+  cursor: pointer;
+  animation: float 2s ease-in-out infinite;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+  background-color: rgba(58, 30, 16, 0.6);
+  border: 1px solid #a06937;
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(160, 105, 55, 0.5);
+}
+
+.section-scroll-indicator:hover {
+  opacity: 1;
+  background-color: rgba(160, 105, 55, 0.6);
+  color: #efda9b;
+  transform: translateX(-50%) scale(1.1);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* Fix for Firefox */
+html,
+body {
+  scrollbar-width: auto;
+  scrollbar-color: #a06937 #3a1e10;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3a1e10;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a06937;
+  border-radius: 6px;
+  border: 3px solid #3a1e10;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .section {
+    padding: 100px 5% 80px;
+  }
+
+  .section-title {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title::before {
+    top: -15px;
+    height: 5px;
+  }
+
+  .section-title::after {
+    bottom: -15px;
+  }
+
+  .section-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .section-scroll-indicator {
+    bottom: 25px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 5% 40px !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .section-title::before {
+    top: -12px;
+    height: 4px;
+    width: 120px;
+  }
+
+  .section-title::after {
+    bottom: -12px;
+    width: 160px;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .section-scroll-indicator {
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 70px 5% 60px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    -webkit-text-stroke: 0.5px #7a5c13;
+  }
+
+  .section-title::before {
+    top: -10px;
+    height: 3px;
+    width: 100px;
+  }
+
+  .section-title::after {
+    bottom: -10px;
+    width: 130px;
+    height: 1px;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-scroll-indicator {
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Loading spinner styles */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(160, 105, 55, 0.3);
+  border-radius: 50%;
+  border-top-color: #a06937;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Global optimization for all sections */
+/* This ensures consistent vertical spacing and better viewport fitting */
+
+/* Reduce top margins for container elements */
+.timeline-container,
+.prizes-container,
+.faq-container,
+.registration-form,
+.sponsors-container,
+.organizers-container,
+.rules-container,
+.about-content {
+  margin-top: 40px !important; /* Reduced from 60px */
+}
+
+/* Reduce font sizes for better scaling */
+h2.section-title {
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Reduce spacing between elements */
+.section-subtitle {
+  font-size: 1.2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Optimize content scaling */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px !important; /* Reduced from 20px */
+}
+
+/* Reduce card padding */
+.prize-card,
+.faq-item,
+.registration-form,
+.sponsor-card,
+.organizer-card {
+  padding: 25px 20px !important; /* Reduced from 40px 25px */
+}
+
+/* Reduce margins between elements */
+.prize-card,
+.faq-item,
+.sponsor-card,
+.organizer-card {
+  margin-bottom: 20px !important; /* Reduced from 30px */
+}
+
+/* Optimize icon sizes */
+.prize-icon,
+.timeline-icon,
+.faq-icon,
+.icon-inner {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.prize-icon i,
+.timeline-icon i,
+.faq-icon i,
+.icon-inner i {
+  font-size: 1.5rem !important;
+}
+
+/* Optimize text sizes */
+.prize-place,
+.event-phase,
+.faq-question,
+.organizer-name {
+  font-size: 1.4rem !important;
+  margin-bottom: 15px !important;
+}
+
+.prize-rewards li,
+.event-description,
+.faq-answer,
+.organizer-role {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Optimize the total prize money section */
+.total-prize-money {
+  margin-top: 30px !important;
+  padding: 15px !important;
+}
+
+.total-prize-money h3 {
+  font-size: 1.6rem !important;
+}
+
+/* Additional responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 5% 40px !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .prize-place,
+  .event-phase,
+  .faq-question,
+  .organizer-name {
+    font-size: 1.2rem !important;
+  }
+
+  .total-prize-money h3 {
+    font-size: 1.4rem !important;
+  }
+}
+
+/* Optimize rules button */
+.rules-button {
+  padding: 12px 25px !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.8px !important;
+}
+
+.rules-button-container {
+  margin-top: 30px !important;
+}
+
+@media (max-width: 768px) {
+  .rules-button {
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Optimize form elements */
+.form-group {
+  margin-bottom: 15px !important;
+}
+
+.form-label {
+  margin-bottom: 5px !important;
+  font-size: 0.95rem !important;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  padding: 10px 15px !important;
+  font-size: 0.95rem !important;
+}
+
+.form-button {
+  padding: 12px 25px !important;
+  font-size: 1rem !important;
+}
+
+/* Optimize sponsors section */
+.sponsor-tier {
+  margin-bottom: 30px !important;
+}
+
+.sponsor-tier-title {
+  font-size: 1.8rem !important;
+  margin-bottom: 20px !important;
+}
+
+.sponsor-logo img {
+  max-height: 70px !important;
+}
+
+.sponsor-text p {
+  font-size: 0.95rem !important;
+  margin-bottom: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    margin-bottom: 12px !important;
+  }
+
+  .sponsor-tier-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 15px !important;
+  }
+
+  .sponsor-logo img {
+    max-height: 50px !important;
+  }
+}

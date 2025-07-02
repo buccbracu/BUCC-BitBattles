@@ -1,0 +1,414 @@
+.registration-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 5% 100px;
+}
+
+.registration-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 40px auto 0;
+}
+
+.registration-details {
+  text-align: center;
+  background: rgba(58, 30, 16, 0.5);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(160, 105, 55, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.registration-details h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #EFDA9B;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.registration-details h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #A06937, transparent);
+}
+
+.registration-details p {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 35px;
+  color: #EFDA9B;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Registration info container */
+.registration-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Eligibility, important dates, and fees styling */
+.eligibility-info, .important-dates, .fees-info {
+  background: rgba(58, 30, 16, 0.7);
+  border: 1px solid #A06937;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+}
+
+.eligibility-info:hover, .important-dates:hover, .fees-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.eligibility-info h4, .important-dates h4, .fees-info h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #EFDA9B;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.eligibility-info h4::after, .important-dates h4::after, .fees-info h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: #A06937;
+}
+
+.eligibility-info ul, .important-dates ul, .fees-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.eligibility-info li, .important-dates li, .fees-info li {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: #EFDA9B;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 28px;
+}
+
+.eligibility-info li:last-child, .important-dates li:last-child, .fees-info li:last-child {
+  margin-bottom: 0;
+}
+
+.eligibility-info li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #A06937;
+  font-weight: bold;
+}
+
+.important-dates li {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid rgba(160, 105, 55, 0.5);
+  padding-left: 20px;
+  margin-left: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.important-dates li:last-child {
+  padding-bottom: 0;
+}
+
+.important-dates li::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #A06937;
+}
+
+.important-dates li span {
+  font-weight: 600;
+  color: #EFDA9B;
+  margin-bottom: 5px;
+}
+
+.fees-info li {
+  border-left: 2px solid rgba(160, 105, 55, 0.5);
+  padding-left: 20px;
+  margin-left: 10px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.fees-info li:last-child {
+  padding-bottom: 0;
+}
+
+.fees-info li::before {
+  content: '৳';
+  position: absolute;
+  left: -10px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: #3A1E10;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A06937;
+  font-weight: bold;
+  border: 1px solid #A06937;
+}
+
+.fees-info li span {
+  font-weight: 600;
+  color: #EFDA9B;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Registration button styling */
+.registration-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #A06937 0%, #8A5A2E 50%, #A06937 100%);
+  color: #EFDA9B;
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.registration-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.registration-button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.registration-button:hover::before {
+  left: 100%;
+}
+
+.registration-button i {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.registration-button:hover i {
+  transform: translateX(8px);
+}
+
+/* Responsive styles */
+@media (min-width: 992px) {
+  .registration-info-container {
+    flex-direction: row;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .fees-info {
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+  
+  .registration-details {
+    padding: 50px;
+  }
+  
+  .registration-button {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 992px) {
+  .registration-section {
+    padding: 100px 5% 80px;
+  }
+  
+  .registration-content {
+    margin-top: 30px;
+  }
+  
+  .registration-details {
+    padding: 35px;
+  }
+  
+  .registration-info-container {
+    margin-bottom: 30px;
+  }
+  
+  .fees-info {
+    margin-bottom: 40px;
+  }
+  
+  .registration-details h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .registration-details p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .eligibility-info, .important-dates {
+    padding: 25px;
+  }
+  
+  .eligibility-info h4, .important-dates h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .registration-button {
+    padding: 18px 35px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .registration-details {
+    padding: 30px;
+  }
+  
+  .registration-details h3 {
+    font-size: 1.8rem;
+  }
+  
+  .registration-details p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .eligibility-info h4, .important-dates h4 {
+    font-size: 1.2rem;
+  }
+  
+  .eligibility-info li, .important-dates li {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  
+  .registration-button {
+    padding: 16px 30px;
+    font-size: 1.1rem;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-section {
+    padding: 80px 5% 60px;
+  }
+  
+  .registration-content {
+    margin-top: 20px;
+  }
+  
+  .registration-details {
+    padding: 25px 20px;
+  }
+  
+  .registration-details h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  .registration-info-container {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .eligibility-info, .important-dates {
+    padding: 20px;
+  }
+  
+  .eligibility-info h4, .important-dates h4 {
+    font-size: 1.1rem;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .eligibility-info h4::after, .important-dates h4::after {
+    width: 60px;
+  }
+  
+  .eligibility-info li, .important-dates li {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    padding-left: 25px;
+  }
+  
+  .important-dates li {
+    padding-left: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .registration-button {
+    padding: 15px 25px;
+    font-size: 1rem;
+  }
+  
+  .registration-button i {
+    font-size: 1.1rem;
+  }
+} 
