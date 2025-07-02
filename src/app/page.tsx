@@ -38,7 +38,24 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 
-const departments = ["CSE/CS", "EEE", "MNS"];
+const departments = [
+  { name: "Anthropology", initial: "ANT" },
+  { name: "Applied Physics & Electronics", initial: "APE" },
+  { name: "Architecture", initial: "ARC" },
+  { name: "Biotechnology", initial: "BIO" },
+  { name: "Business Administration", initial: "BBA" },
+  { name: "Economics", initial: "ECO" },
+  { name: "English", initial: "ENH" },
+  { name: "Computer Science (CS)", initial: "CS" },
+  { name: "Computer Science & Engineering (CSE)", initial: "CSE" },
+  { name: "Electronic And Communication Engineering", initial: "ECE" },
+  { name: "Electrical And Electronic Engineering", initial: "EEE" },
+  { name: "Laws", initial: "LLB" },
+  { name: "Mathematics", initial: "MAT" },
+  { name: "Microbiology", initial: "MIC" },
+  { name: "Pharmacy", initial: "PRH" },
+  { name: "Physics", initial: "PHY" },
+].map((el) => el.name);
 
 export default function ContestRegistration() {
   const [teamName, setTeamName] = useState("");
