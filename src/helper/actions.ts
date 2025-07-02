@@ -11,6 +11,8 @@ import { supabase } from "./supabase/client";
 import { revalidatePath } from "next/cache";
 import { send } from "./mailer";
 
+export const login = async (pin: string) => pin === process.env.ADMIN_PIN;
+
 export const getTeams = async (): Promise<SupabaseResponse<Team[]>> => {
   const { data, error } = await supabase
     .from("preliminary-round")

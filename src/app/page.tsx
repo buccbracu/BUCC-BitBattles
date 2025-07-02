@@ -295,16 +295,7 @@ export default function ContestRegistration() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="phoneNumber">Phone Number *</Label>
-              {/* <Input
-                id="phoneNumber"
-                type="tel"
-                placeholder="+880 1XXXXXXXXX"
-                value={paymentData.phoneNumber || ""}
-                onChange={(e) =>
-                  updatePaymentData("phoneNumber", e.target.value)
-                }
-                required
-              /> */}
+
               <InputMask
                 mask="___________"
                 replacement={{ _: /\d/ }}
@@ -355,12 +346,6 @@ export default function ContestRegistration() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-
-    console.log({
-      teamName,
-      members,
-      paymentData,
-    });
 
     const { error } = await addTeam({
       teamName,
@@ -652,6 +637,14 @@ export default function ContestRegistration() {
                     Add Team Member
                   </Button>
                 )}
+
+                <div className="bg-amber-900/20 border border-amber-700/30 rounded-lg p-4">
+                  <p className="text-sm text-red-200">
+                    <strong className="text-red-400">Warning:</strong> Please
+                    make sure that the provided informations are correct before
+                    submitting.
+                  </p>
+                </div>
               </CardContent>
             </Card>
 
