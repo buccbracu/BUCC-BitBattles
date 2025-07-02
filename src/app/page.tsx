@@ -627,15 +627,17 @@ export default function ContestRegistration() {
                   </div>
                 ))}
 
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={addMember}
-                  className="w-full bg-amber-950/20 border-amber-800/50 text-amber-200 hover:bg-amber-900/30 hover:border-amber-700 hover:text-amber-100"
-                >
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add Team Member
-                </Button>
+                {!(members.length >= 3) && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={addMember}
+                    className="w-full bg-amber-950/20 border-amber-800/50 text-amber-200 hover:bg-amber-900/30 hover:border-amber-700 hover:text-amber-100"
+                  >
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add Team Member
+                  </Button>
+                )}
               </CardContent>
             </Card>
 
