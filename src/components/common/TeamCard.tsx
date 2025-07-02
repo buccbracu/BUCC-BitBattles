@@ -3,7 +3,6 @@
 import {
   Eye,
   Phone,
-  CreditCard,
   User,
   GraduationCap,
   Building,

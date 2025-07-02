@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { addTeam } from "@/helper/actions";
-import { PaymentData, PaymentMethod, TeamMember } from "@/types";
+import { PaymentData, TeamMember } from "@/types";
 import { InputMask } from "@react-input/mask";
 import {
   Select,
@@ -700,8 +700,8 @@ export default function ContestRegistration() {
                               className="w-64 my-4"
                             />
                             <p className="text-sm text-amber-200 bg-amber-800/20 p-2 rounded border-l-4 border-amber-500">
-                              <strong>Important:</strong> Use "Send Money"
-                              option while sending the money
+                              <strong>Important:</strong> Use &quot;Send
+                              Money&quot; option while sending the money
                             </p>
                           </div>
                         </div>
