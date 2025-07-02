@@ -156,7 +156,7 @@ export default function ContestRegistration() {
     }
 
     if (paymentData.method === "bank") {
-      if (!paymentData.bankName?.trim() || !paymentData.accountName?.trim()) {
+      if (!paymentData.bankName?.trim() || !paymentData.accountNumber?.trim()) {
         toast.error("Validation Error", {
           description: "Bank name and account name are required",
         });
@@ -235,13 +235,13 @@ export default function ContestRegistration() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="accountName">Account Name *</Label>
+              <Label htmlFor="accountName">Account Number *</Label>
               <Input
                 id="accountName"
                 placeholder="Enter account holder name"
-                value={paymentData.accountName || ""}
+                value={paymentData.accountNumber || ""}
                 onChange={(e) =>
-                  updatePaymentData("accountName", e.target.value)
+                  updatePaymentData("accountNumber", e.target.value)
                 }
                 required
               />

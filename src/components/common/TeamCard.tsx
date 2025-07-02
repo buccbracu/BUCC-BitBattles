@@ -22,7 +22,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { Separator } from "../ui/separator";
-import { Team } from "@/types";
+import { PaymentData, Team } from "@/types";
 import { Badge } from "../ui/badge";
 import { toast } from "sonner";
 import { updateTeam } from "@/helper/actions";
@@ -57,10 +57,12 @@ export default function TeamCard({ team }: Props) {
             </p>
             <div className="space-y-1">
               <div className="font-mono text-sm font-semibold text-blue-600">
-                {team.bkash}
+                {team.paymentInfo.bkashNumber ||
+                  team.paymentInfo.phoneNumber ||
+                  team.paymentInfo.accountNumber}
               </div>
               <div className="font-mono text-sm font-medium text-green-600">
-                {team.transactionId}
+                {team.paymentInfo.transactionId}
               </div>
             </div>
           </div>
@@ -90,18 +92,14 @@ export default function TeamCard({ team }: Props) {
                         Payment Information
                       </h4>
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <Phone className="h-4 w-4" />
-                          <span className="text-sm">
-                            Bkash Number: {team.bkash}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <CreditCard className="h-4 w-4" />
-                          <span className="text-sm">
-                            Transaction ID: {team.transactionId}
-                          </span>
-                        </div>
+                        {Object.keys(team.paymentInfo).map((key) => (
+                          <div className="flex items-center gap-2" key={key}>
+                            <Phone className="h-4 w-4" />
+                            <span className="text-sm">
+                              Info: {team.paymentInfo[key as keyof PaymentData]}
+                            </span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                     <div>
@@ -207,10 +205,12 @@ export default function TeamCard({ team }: Props) {
           <div>
             <div className="space-y-1">
               <div className="font-mono font-semibold text-blue-600">
-                {team.bkash}
+                {team.paymentInfo.bkashNumber ||
+                  team.paymentInfo.phoneNumber ||
+                  team.paymentInfo.accountNumber}
               </div>
               <div className="font-mono font-medium text-green-600">
-                {team.transactionId}
+                {team.paymentInfo.transactionId}
               </div>
             </div>
           </div>
@@ -236,18 +236,14 @@ export default function TeamCard({ team }: Props) {
                         Payment Information
                       </h4>
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <Phone className="h-4 w-4" />
-                          <span className="text-sm">
-                            Bkash Number: {team.bkash}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <CreditCard className="h-4 w-4" />
-                          <span className="text-sm">
-                            Transaction ID: {team.transactionId}
-                          </span>
-                        </div>
+                        {Object.keys(team.paymentInfo).map((key) => (
+                          <div className="flex items-center gap-2" key={key}>
+                            <span className="text-sm">
+                              {key[0].toUpperCase() + key.slice(1, key.length)}:{" "}
+                              {team.paymentInfo[key as keyof PaymentData]}
+                            </span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                     <div>

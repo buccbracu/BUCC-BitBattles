@@ -8,7 +8,7 @@ export interface PaymentData {
   method: string;
   bkashNumber?: string;
   bankName?: string;
-  accountName?: string;
+  accountNumber?: string;
   phoneNumber?: string;
   transactionId: string;
   notes?: string;
