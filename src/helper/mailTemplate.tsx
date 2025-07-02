@@ -39,10 +39,99 @@ export const registeredMail = (team: Partial<GetTeamDTO>) => {
 export const verifiedMail = (team: Partial<GetTeamDTO>) => {
   return `<div style="font-family: Arial, sans-serif; line-height: 1.6;">
     <h2>Bit Battles Registration Verification</h2>
+
     <p>Dear ${team.team_name},</p>
-    <p>Your registration has been successfully verified for <strong>Bit Battles</strong></p>
+
+    <p>We are pleased to inform you that your team’s registration for BitBattles has been successfully verified. You are now officially confirmed as participants in this exciting competition of logic, speed, and code!</p>
+
+    <p>Here are your verified team details for your records:</p>
+
+    <p>
+    <strong>Team Name:</strong><br/>
+    ${team.team_name}
+    </p>
+
+    ${
+      team.members &&
+      team.members?.length > 0 &&
+      `<p>
+    <strong>Team Leader:</strong><br/>
+${team.members[0].name} – ${team.members[0].studentId} – ${team.members[0].gsuiteEmail}
+    </p>`
+    }
    
-    <p>If you have any questions, feel free to <a href="mailto:${process.env.MAIL_USER}">contact us</a>.</p>
-    <p>Best Regards,<br />BUCC R&D Team</p>
+    ${
+      team.members && team.members?.length > 1
+        ? `<p>
+    <strong>Team Members:</strong>
+    ${
+      team.members && team.members.length > 1
+        ? team.members
+            .slice(1)
+            .map(
+              (member, i) =>
+                `• ${member.name} - ${member.studentId} - ${member.gsuiteEmail}</br>`
+            )
+            .join("\n")
+        : ""
+    }
+    </p>`
+        : ""
+    }
+   
+    <p>✅ What’s Next?</p>
+
+    <p>You will soon receive further instructions regarding the competition schedule, rules, and any other materials you might need.</p>
+
+    <p>Keep an eye on your email and our official Facebook Page for all updates.</p>
+
+    <p>Make sure all team members are ready on the event day.</p>
+
+    <p>If you notice any errors in the details above, please "Reply All" to this email immediately so we can update our records.</p>
+
+    <p>We’re thrilled to have you competing in BitBattles and can’t wait to see your team in action.</p>
+
+    <p>Get ready. Get set. Code!</p>
+
   </div>`;
 };
+
+`
+
+
+
+
+
+
+
+
+
+
+
+
+Here are your verified team details for your records:
+
+Team Name:
+[Team Name]
+
+Team Leader:
+[Leader Name] – [Student ID] – [G-suite]
+
+Team Members:
+• [Member 1 Name] – [Student ID] – [G-suite]
+• [Member 2 Name] – [Student ID] – [G-suite]
+
+✅ What’s Next?
+
+You will soon receive further instructions regarding the competition schedule, rules, and any other materials you might need.
+
+Keep an eye on your email and our official Facebook Page for all updates.
+
+Make sure all team members are ready on the event day.
+
+If you notice any errors in the details above, please "Reply All" to this email immediately so we can update our records.
+
+We’re thrilled to have you competing in BitBattles and can’t wait to see your team in action.
+
+Get ready. Get set. Code!
+`;
