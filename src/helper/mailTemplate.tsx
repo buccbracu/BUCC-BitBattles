@@ -4,35 +4,35 @@ export const registeredMail = (team: Partial<GetTeamDTO>) => {
   return `<div style="font-family: Arial, sans-serif; line-height: 1.6;">
     <h2>Bit Battles Registration Confirmation</h2>
     <p>Dear ${team.team_name},</p>
-    <p>Thank you for registering for the <strong>Bit Battles</strong>. Our team will soon verify the registration and let you know.</p>
-    <p>Here are your registration details:</p>
-    <ul>
-      <li><strong>Team Name:</strong> ${team.team_name}</li>
-      <li><strong>Leader Name:</strong> ${
-        team.members && team.members[0].name
-      }</li>
-      <li><strong>Leader's Email (GSuite):</strong> ${
-        team.members && team.members[0].gsuiteEmail
-      }</li>
+    <p>Your team has been successfully registered for BitBattles. We’re excited to have you participate in this thrilling competition of logic, speed, and code!</p>
+    <p>Here are your team details for confirmation:</p>
+    
+      <p><strong>Team Name:</strong> ${team.team_name} <br/>
+      <strong>Team Leader Name:</strong> ${
+        team.members &&
+        `${team.members[0].name} - ${team.members[0].studentId} - ${team.members[0].gsuiteEmail}`
+      }
+      <br/>
+      <strong>Team Members:</strong><br/>
+      
       ${
         team.members && team.members.length > 1
           ? team.members
               .slice(1)
               .map(
                 (member, i) =>
-                  `<li><strong>Team Member ${i + 1}:</strong> ${member.name} (${
-                    member.gsuiteEmail
-                  })</li>`
+                  `• ${member.name} - ${member.studentId} - ${member.gsuiteEmail}</br>`
               )
               .join("\n")
           : ""
       }
-    </ul>
-    <p>We are excited to have you with us and wish you the best of luck for the competition!</p>
-    <p><strong>NOTE:</strong> If you don't get a verified mail within 24 hours, feel free to <a href="mailto:${
-      process.env.MAIL_USER
-    }">contact us</a>.</p>
-    <p>Best Regards,<br />BUCC R&D Team</p>
+      
+      </p>
+    <p>Please keep an eye on your inbox and on our official Facebook Page as we’ll be sharing important updates soon. Please make sure all team members are available on the event date and are familiar with the rules.</p>
+
+    <p>If any of the above details are incorrect, kindly "Reply All" to this email with the corrected information by [deadline date].</p>
+
+    <p>Get ready to battle it out with the best. We look forward to your participation. Best of luck!</p>
   </div>`;
 };
 
