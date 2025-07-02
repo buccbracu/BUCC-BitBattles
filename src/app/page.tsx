@@ -148,6 +148,18 @@ export default function ContestRegistration() {
         });
         return false;
       }
+
+      const isAllNumbers = /^\d+$/.test(member.studentId);
+
+      const isValidLength =
+        member.studentId.length === 8 || member.studentId.length === 10;
+
+      if (!(isAllNumbers && isValidLength)) {
+        toast.error("Validation Error", {
+          description: "Student ID has to be a number with a length of 8 or 10",
+        });
+        return false;
+      }
     }
 
     if (!paymentData.method) {
@@ -521,14 +533,16 @@ export default function ContestRegistration() {
                       <div className="space-y-2">
                         <Label>Student ID *</Label>
 
-                        <InputMask
-                          mask="________"
-                          replacement={{ _: /\d/ }}
-                          component={Input}
+                        <Input
                           value={member.studentId}
-                          onChange={(e) =>
-                            updateMember(member.id, "studentId", e.target.value)
-                          }
+                          onChange={(e) => {
+                            updateMember(
+                              member.id,
+                              "studentId",
+                              e.target.value
+                            );
+                          }}
+                          placeholder="XXXXXXXX"
                           required
                         />
                       </div>
