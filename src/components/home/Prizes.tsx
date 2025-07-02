@@ -1,7 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./Prizes.css";
-import { Award, Bolt, ChartLine, Laptop, Medal, Trophy } from "lucide-react";
+import {
+  Award,
+  Bolt,
+  ChartLine,
+  ChevronDown,
+  Laptop,
+  Medal,
+  Trophy,
+} from "lucide-react";
 
 const Prizes = () => {
   const sectionRef = useRef(null);
@@ -155,7 +163,7 @@ const Prizes = () => {
       </div>
 
       <div className="section-scroll-indicator" onClick={scrollToNextSection}>
-        <i className="fas fa-chevron-down"></i>
+        <ChevronDown className="text-white" />
       </div>
     </section>
   );

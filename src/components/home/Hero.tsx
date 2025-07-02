@@ -163,14 +163,13 @@ const Hero = () => {
           height="1080"
           controls
           preload="none"
-          //   ref={videoRef}
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           poster="/background.webm"
-          // className={videoLoaded ? "video-loaded" : ""}
-          className="opacity-100"
+          className={videoLoaded ? "video-loaded" : ""}
         >
           <source src="/background.webm" type="video/webm" />
           Your browser does not support the video tag.
@@ -235,7 +234,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div ref={buttonContainerRef} className="cta-container">
             <Link
-              href="/registration"
+              href="/registe"
               target="_blank"
               rel="noopener noreferrer"
               ref={registerBtnRef}

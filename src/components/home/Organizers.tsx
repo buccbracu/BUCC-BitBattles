@@ -93,7 +93,7 @@ const Organizers = () => {
             </p>
             <p>
               BUCC organizes various events, workshops, and competitions
-              throughout the year to enhance students' technical and soft
+              throughout the year to enhance students&apos; technical and soft
               skills, preparing them for future careers in the technology
               sector.
             </p>
