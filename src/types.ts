@@ -1,11 +1,26 @@
+export enum PaymentMethod {
+  Bkash = "bkash",
+  Bank = "bank",
+  BkashToBank = "bkash-to-bank",
+}
+
+export interface PaymentData {
+  method: string;
+  bkashNumber?: string;
+  bankName?: string;
+  accountName?: string;
+  phoneNumber?: string;
+  transactionId: string;
+  notes?: string;
+}
+
 export interface Team {
   id: string;
   teamName: string;
   members: TeamMember[];
-  bkash: string;
-  transactionId: string;
-  createdAt: string;
+  paymentInfo: PaymentData;
   paymentVerified: boolean;
+  createdAt: string;
 }
 
 export interface TeamMember {
@@ -20,11 +35,11 @@ export interface TeamMember {
 }
 
 export type GetTeamDTO = {
-  created_at: string;
+  id: string;
   team_name: string;
+  created_at: string;
   members: TeamMember[];
-  bkash: string;
-  transaction_id: string;
+  payment_info: PaymentData;
   payment_verified: boolean;
 };
 export type AddTeamDTO = Omit<Team, "id" | "createdAt" | "paymentVerified">;

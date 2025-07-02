@@ -16,16 +16,17 @@ export const getTeams = async (): Promise<SupabaseResponse<Team[]>> => {
     .from("preliminary-round")
     .select()
     .order("created_at", { ascending: false });
+
   if (error) return { success: false, error: error.message };
 
-  const formattedData: Team[] = data.map((member) => ({
-    id: member.id,
-    createdAt: member.created_at,
-    teamName: member.team_name,
-    members: member.members,
-    bkash: member.bkash,
-    transactionId: member.transaction_id,
-    paymentVerified: member.payment_verified,
+  const formattedData: Team[] = data.map((team) => ({
+    id: team.id,
+    createdAt: team.created_at,
+    teamName: team.team_name,
+    members: team.members,
+    paymentInfo: team.payment_info,
+    paymentVerified: team.payment_verified,
+    paymentMethod: team.payment_method,
   }));
   return { success: true, payload: formattedData };
 };
@@ -73,9 +74,9 @@ export const addTeam = async (team: AddTeamDTO): Promise<SupabaseResponse> => {
   const dataToInsert: Partial<GetTeamDTO> = {
     team_name: team.teamName,
     members: team.members,
-    bkash: team.bkash,
-    transaction_id: team.transactionId,
+    payment_info: team.paymentInfo,
   };
+
   const { error } = await supabase
     .from("preliminary-round")
     .insert(dataToInsert);
