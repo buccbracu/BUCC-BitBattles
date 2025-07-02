@@ -1,6 +1,14 @@
 import React from "react";
 import "./Footer.css";
 import Image from "next/image";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Youtube,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -75,12 +83,11 @@ const Footer = () => {
               <h3>Contact Us</h3>
               <ul className="contact-info">
                 <li>
-                  <i className="fas fa-envelope"></i>{" "}
+                  <Mail />
                   <a href="mailto:bucc@g.bracu.ac.bd">bucc@g.bracu.ac.bd</a>
                 </li>
                 <li>
-                  <i className="fas fa-map-marker-alt"></i> BRAC University,
-                  Merul Badda, Dhaka-1212
+                  <MapPin /> BRAC University, Merul Badda, Dhaka-1212
                 </li>
               </ul>
 
@@ -91,7 +98,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="social-link"
                 >
-                  <i className="fab fa-facebook-f"></i>
+                  <Facebook />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/bracucc/"
@@ -99,7 +106,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="social-link"
                 >
-                  <i className="fab fa-linkedin-in"></i>
+                  <Linkedin />
                 </a>
                 <a
                   href="https://www.instagram.com/bracucc/"
@@ -107,7 +114,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="social-link"
                 >
-                  <i className="fab fa-instagram"></i>
+                  <Instagram />
                 </a>
                 <a
                   href="https://www.youtube.com/@bracucc"
@@ -115,7 +122,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="social-link"
                 >
-                  <i className="fab fa-youtube"></i>
+                  <Youtube />
                 </a>
               </div>
             </div>

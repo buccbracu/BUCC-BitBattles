@@ -8,6 +8,7 @@ import React, {
 import gsap from "gsap";
 import "./Faq.css";
 import Link from "next/link";
+import { ChevronDown, Minus, Plus } from "lucide-react";
 
 const Faq = () => {
   const sectionRef = useRef(null);
@@ -134,11 +135,7 @@ const Faq = () => {
               <div className="faq-question">
                 <h3>{item.question}</h3>
                 <span className="faq-icon">
-                  <i
-                    className={`fas ${
-                      activeIndex === index ? "fa-minus" : "fa-plus"
-                    }`}
-                  ></i>
+                  {activeIndex === index ? <Minus /> : <Plus />}
                 </span>
               </div>
 
@@ -164,7 +161,7 @@ const Faq = () => {
       </div>
 
       <div className="section-scroll-indicator" onClick={scrollToNextSection}>
-        <i className="fas fa-chevron-down"></i>
+        <ChevronDown className="text-white" />
       </div>
     </section>
   );

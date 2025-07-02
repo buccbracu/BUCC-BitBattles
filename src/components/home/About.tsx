@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./About.css";
+import { ChevronDown, Columns, Microchip, Shield } from "lucide-react";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -92,21 +93,21 @@ const About = () => {
           <div className="floating-icons" ref={iconsRef}>
             <div className="floating-icon icon-column">
               <div className="icon-inner">
-                <i className="fas fa-columns"></i>
+                <Columns className="text-white" />
               </div>
               <span>Structure</span>
             </div>
 
             <div className="floating-icon icon-shield">
               <div className="icon-inner">
-                <i className="fas fa-shield-alt"></i>
+                <Shield className="text-white" />
               </div>
               <span>Challenge</span>
             </div>
 
             <div className="floating-icon icon-chip">
               <div className="icon-inner">
-                <i className="fas fa-microchip"></i>
+                <Microchip className="text-white" />
               </div>
               <span>Technology</span>
             </div>
@@ -115,7 +116,7 @@ const About = () => {
       </div>
 
       <div className="section-scroll-indicator" onClick={scrollToNextSection}>
-        <i className="fas fa-chevron-down"></i>
+        <ChevronDown className="text-white" />
       </div>
     </section>
   );

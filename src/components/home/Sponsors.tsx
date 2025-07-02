@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./Sponsors.css";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 const Sponsors = () => {
   const sectionRef = useRef(null);
@@ -99,7 +100,7 @@ const Sponsors = () => {
       </div>
 
       <div className="section-scroll-indicator" onClick={scrollToNextSection}>
-        <i className="fas fa-chevron-down"></i>
+        <ChevronDown className="text-white" />
       </div>
     </section>
   );

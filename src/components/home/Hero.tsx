@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./Hero.css";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   // Refs for animation
@@ -155,7 +157,7 @@ const Hero = () => {
   return (
     <div className="hero-container">
       {/* Video background */}
-      <div className="video-background">
+      <div className="video-background opacity-100">
         <video
           width="1920"
           height="1080"
@@ -167,7 +169,8 @@ const Hero = () => {
           muted
           playsInline
           poster="/background.webm"
-          //   className={videoLoaded ? "video-loaded" : ""}
+          // className={videoLoaded ? "video-loaded" : ""}
+          className="opacity-100"
         >
           <source src="/background.webm" type="video/webm" />
           Your browser does not support the video tag.
@@ -231,16 +234,16 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div ref={buttonContainerRef} className="cta-container">
-            <a
-              href="https://bucc-bitbattle-dev.vercel.app/"
+            <Link
+              href="/registration"
               target="_blank"
               rel="noopener noreferrer"
               ref={registerBtnRef}
               className="cta-button register-btn"
             >
               <span className="btn-text">Sign Up & Register</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.bracucc.org/"
               target="_blank"
               rel="noopener noreferrer"
@@ -248,13 +251,13 @@ const Hero = () => {
               className="cta-button website-btn"
             >
               <span className="btn-text">BUCC Website</span>
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Scroll Down Indicator */}
         <div className="scroll-indicator" onClick={scrollToNextSection}>
-          <i className="fas fa-chevron-down"></i>
+          <ChevronDown className="text-white " />
         </div>
       </div>
     </div>
