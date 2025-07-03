@@ -8,7 +8,6 @@ import {
   Team,
 } from "@/types";
 import { supabase } from "./supabase/client";
-// import { revalidatePath } from "next/cache";
 import { send } from "./mailer";
 
 export const login = async (pin: string) => pin === process.env.ADMIN_PIN;

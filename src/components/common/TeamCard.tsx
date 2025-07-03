@@ -36,12 +36,27 @@ interface Props {
 export default function TeamCard({ team }: Props) {
   const [pin, setPin] = useState("");
   // const [loggedIn, setLoggedIn] = useState(false);
+  // const [loading, setLoading] = useState(false)
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
   const [verified, setVerified] = useState(team.paymentVerified);
 
   const handleVerifyTeam = async () => {
-    setOpen(true);
+    toast.info("Verifying...", { icon: <Loader /> });
+    // setLoading(true)
+    const { error } = await updateTeam(team.id);
+    if (error) {
+      // setLoading(false)
+      return toast.error(error, {
+        description: "Something went wrong while verifying the payment!",
+      });
+    }
+
+    toast.success("Team Verified", {
+      description: "Payment has been verified and team is now approved.",
+    });
+    setVerified(true);
+    // setLoading(false)
   };
 
   const handleLogin = async () => {

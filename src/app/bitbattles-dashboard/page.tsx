@@ -8,15 +8,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { CheckCircle, Users } from "lucide-react";
-import { getTeams } from "@/helper/actions";
+import { CheckCircle, Lock, Shield, Users } from "lucide-react";
+import { getTeams, login } from "@/helper/actions";
 import TeamCard from "@/components/common/TeamCard";
 import { useEffect, useState } from "react";
 import { Team } from "@/types";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function ContestDashboard() {
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState<Team[]>([]);
+  const [loggedIn, setloggedIn] = useState(false);
+  const [pin, setPin] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +32,87 @@ export default function ContestDashboard() {
       setTeams(payload as Team[]);
       setLoading(false);
     };
-    fetchData();
-  }, []);
+    loggedIn && fetchData();
+  }, [loggedIn]);
+
+  const handleLogin = async () => {
+    const success = await login(pin);
+    if (success) {
+      setloggedIn(success);
+      return;
+    }
+
+    setloggedIn(false);
+    toast.error("Login failed!!");
+  };
+
+  if (!loggedIn) {
+    return (
+      <div
+        className="min-h-screen py-8 px-4 flex items-center justify-center"
+        style={{ backgroundColor: "#311c11" }}
+      >
+        <div className="w-full max-w-md">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="relative mb-6">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Shield className="h-12 w-12 text-amber-500" />
+                <Lock className="h-8 w-8 text-amber-400" />
+              </div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent">
+                Admin Access Required
+              </h1>
+              <p className="text-amber-200/70 mt-2">
+                Please enter admin credentials to access the registration system
+              </p>
+            </div>
+          </div>
+
+          {/* Login Form */}
+          <Card className="bg-amber-950/20 border-amber-800/30 backdrop-blur-sm shadow-2xl">
+            <CardHeader className="text-center border-b border-amber-800/30">
+              <CardTitle className="text-amber-100">Login</CardTitle>
+              <CardDescription className="text-amber-200/70">
+                Enter your admin credentials to continue
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-amber-100">
+                    Pin
+                  </Label>
+                  <Input
+                    placeholder="Enter pin"
+                    value={pin}
+                    onChange={(e) => setPin(e.target.value)}
+                    className="bg-amber-950/30 border-amber-800/50 text-amber-100 placeholder:text-amber-400/60 focus:border-amber-600 focus:ring-amber-600/20"
+                    required
+                  />
+                </div>
+
+                <Button
+                  onClick={handleLogin}
+                  className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white"
+                  disabled={loggedIn}
+                >
+                  {loggedIn ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Logging in...
+                    </div>
+                  ) : (
+                    "Login"
+                  )}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   if (loading)
     return (
