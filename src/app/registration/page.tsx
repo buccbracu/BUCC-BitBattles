@@ -442,7 +442,7 @@ export default function ContestRegistration() {
               Homepage
             </Link>
             <Link
-              href={"/rules"}
+              href={"/rulebook"}
               className="cursor-pointer flex items-center justify-center gap-1 border  rounded-sm border-amber-600/50 text-amber-300 hover:bg-amber-600/10 hover:border-amber-500 bg-transparent p-2 px-4"
             >
               <BookOpen className="h-4 w-4 mr-2" />

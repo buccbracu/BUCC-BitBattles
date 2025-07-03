@@ -154,7 +154,7 @@ const Faq = () => {
         </div>
 
         <div className="rules-button-container" ref={rulesButtonRef}>
-          <Link href="/rules" className="rules-button">
+          <Link href="/rulebook" className="rules-button">
             View Complete Rule Book
           </Link>
         </div>

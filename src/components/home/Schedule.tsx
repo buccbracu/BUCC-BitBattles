@@ -21,14 +21,14 @@ const Schedule = () => {
   const timelineEvents = [
     {
       phase: "Registration Begins",
-      date: "1st July, 2025",
+      date: "3rd July, 2025",
       description:
         "Register online through our registration form. Open to all BRAC University students.",
       icon: <Edit className="text-white" />,
     },
     {
       phase: "Registration Ends",
-      date: "8th July, 2025",
+      date: "9th July, 2025",
       description:
         "Last day to submit your registration for the preliminary round.",
       icon: <CalendarHeart className="text-white" />,
@@ -54,8 +54,8 @@ const Schedule = () => {
       icon: <ClipboardCheck className="text-white" />,
     },
     {
-      phase: "Registration Ends for Onsite",
-      date: "16th July, 2025",
+      phase: "Registration Ends for Onsite (Tentative)",
+      date: "14th July, 2025",
       description:
         "Last day to confirm your participation in the onsite finals.",
       icon: <CalendarCheck className="text-white" />,
