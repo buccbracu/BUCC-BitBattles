@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
+import "../../components/home/Registration.css";
 
 const departments = [
   { name: "Anthropology", initial: "ANT" },
@@ -691,6 +692,19 @@ export default function ContestRegistration() {
                         </SelectItem>
                       </SelectContent>
                     </Select>
+                  </div>
+
+                  <div className="fees-info fees-info2 w-full">
+                    <h4>Registration Fees:</h4>
+                    <ul>
+                      <li>
+                        <span>Preliminary Round:</span> BDT 498/=
+                      </li>
+                      <li>
+                        <span>Final Round (for qualified teams):</span> BDT
+                        1000/=
+                      </li>
+                    </ul>
                   </div>
 
                   {paymentData.method && (

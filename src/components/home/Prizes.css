@@ -1,0 +1,397 @@
+.prizes-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 5% 100px;
+}
+
+.prizes-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* Prize card styling */
+.prize-card {
+  background: rgba(58, 30, 16, 0.7);
+  border: 2px solid #A06937;
+  border-radius: 15px;
+  padding: 40px 25px;
+  width: calc(33.333% - 30px);
+  min-width: 260px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: auto;
+  min-height: 450px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.prize-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ffe066, #cc9900, #ffe066);
+  z-index: 1;
+}
+
+.prize-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Prize icon styling with glow effect */
+.prize-icon-container {
+  margin-bottom: 25px;
+  flex-shrink: 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prize-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe066 0%, #e6b800 50%, #cc9900 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 40px rgba(255, 215, 0, 0.3);
+  position: relative;
+  margin: 0 auto;
+}
+
+.prize-icon::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe066, #cc9900);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.prize-icon i {
+  font-size: 2.5rem;
+  color: #3A1E10;
+}
+
+/* Prize place title styling */
+.prize-place {
+  font-family: 'Kragx', sans-serif;
+  font-size: 1.9rem;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #ffe066 10%, #e6b800 45%, #cc9900 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #7a5c13;
+  position: relative;
+  width: 100%;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  padding: 0 10px;
+  line-height: 1.3;
+}
+
+/* Prize rewards list styling */
+.prize-rewards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.prize-rewards li {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #EFDA9B;
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 28px;
+  padding-right: 10px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.prize-rewards li:last-child {
+  margin-bottom: 0;
+}
+
+.prize-rewards li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: #A06937;
+  font-size: 1.2rem;
+}
+
+/* Recognition card specific styles */
+.recognition-card .prize-icon {
+  background: linear-gradient(135deg, #EFDA9B 0%, #D4B76B 50%, #A06937 100%);
+}
+
+.recognition-card .prize-place {
+  font-size: 1.9rem;
+  background: linear-gradient(135deg, #EFDA9B 10%, #D4B76B 45%, #A06937 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #7a5c13;
+}
+
+/* Remove additional-rewards section */
+.additional-rewards {
+  display: none;
+}
+
+/* Special styling for top 3 places */
+.prize-card:nth-child(1) {
+  transform: translateY(-10px);
+  z-index: 3;
+}
+
+.prize-card:nth-child(1):hover {
+  transform: translateY(-20px);
+}
+
+.prize-card:nth-child(1) .prize-icon {
+  background: linear-gradient(135deg, #ffe066 0%, #e6b800 50%, #cc9900 100%);
+  width: 100px;
+  height: 100px;
+}
+
+.prize-card:nth-child(1) .prize-icon i {
+  font-size: 3rem;
+}
+
+.prize-card:nth-child(2) .prize-icon {
+  background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 50%, #808080 100%);
+}
+
+.prize-card:nth-child(3) .prize-icon {
+  background: linear-gradient(135deg, #CD7F32 0%, #B87333 50%, #A46628 100%);
+}
+
+/* Total Prize Money Section */
+.total-prize-money {
+  text-align: center;
+  margin-top: 30px;
+  background: rgba(58, 30, 16, 0.7);
+  border: 2px solid #A06937;
+  border-radius: 15px;
+  padding: 20px 40px;
+  max-width: 600px;
+  width: 100%;
+  margin: 40px auto 0;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.total-prize-money::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ffe066, #cc9900, #ffe066);
+  z-index: 1;
+}
+
+.total-prize-money h3 {
+  font-family: 'Kragx', sans-serif;
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, #ffe066 10%, #e6b800 45%, #cc9900 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #7a5c13;
+  margin: 0;
+  padding: 10px 0;
+}
+
+/* Special styling for specific prizes */
+.prize-card:nth-child(4) .prize-icon {
+  background: linear-gradient(135deg, #4d94ff 0%, #0066ff 50%, #0047b3 100%);
+}
+
+.prize-card:nth-child(5) .prize-icon {
+  background: linear-gradient(135deg, #70db70 0%, #33cc33 50%, #248f24 100%);
+}
+
+.prize-card:nth-child(6) .prize-icon {
+  background: linear-gradient(135deg, #ff6666 0%, #ff0000 50%, #cc0000 100%);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .prizes-container {
+    gap: 25px;
+    justify-content: center;
+  }
+  
+  .prize-card {
+    width: calc(50% - 25px);
+    max-width: 350px;
+    padding: 35px 25px;
+  }
+  
+  .total-prize-money h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .prizes-section {
+    padding: 100px 5% 80px;
+  }
+  
+  .prizes-container {
+    margin-top: 40px;
+  }
+  
+  .prize-card {
+    width: calc(50% - 20px);
+    padding: 30px 25px;
+    min-height: 400px;
+  }
+  
+  .prize-rewards li {
+    font-size: 0.95rem;
+    padding-right: 8px;
+  }
+  
+  .prize-place {
+    font-size: 1.8rem;
+  }
+  
+  .total-prize-money {
+    padding: 15px 30px;
+  }
+  
+  .total-prize-money h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .prizes-container {
+    gap: 20px;
+  }
+  
+  .prize-card {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    min-height: 360px;
+    padding: 30px 25px;
+  }
+  
+  .prize-place {
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+  }
+  
+  .prize-rewards li {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  
+  .total-prize-money {
+    padding: 15px 20px;
+  }
+  
+  .total-prize-money h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .prizes-section {
+    padding: 80px 5% 60px;
+  }
+  
+  .prizes-container {
+    margin-top: 30px;
+    gap: 20px;
+  }
+  
+  .prize-card {
+    min-height: 340px;
+    padding: 25px 20px;
+  }
+  
+  .prize-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .prize-icon i {
+    font-size: 2rem;
+  }
+  
+  .prize-card:nth-child(1) .prize-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .prize-card:nth-child(1) .prize-icon i {
+    font-size: 2.2rem;
+  }
+  
+  .prize-place {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding: 0 5px;
+  }
+  
+  .prize-rewards li {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 5px;
+  }
+  
+  .prize-rewards li::before {
+    font-size: 1rem;
+  }
+  
+  .total-prize-money {
+    margin-top: 30px;
+  }
+  
+  .total-prize-money h3 {
+    font-size: 1.4rem;
+  }
+} 

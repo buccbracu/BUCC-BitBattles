@@ -8,7 +8,7 @@ import {
   Team,
 } from "@/types";
 import { supabase } from "./supabase/client";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import { send } from "./mailer";
 
 export const login = async (pin: string) => pin === process.env.ADMIN_PIN;
@@ -87,7 +87,7 @@ export const addTeam = async (team: AddTeamDTO): Promise<SupabaseResponse> => {
 
   await send(dataToInsert, EmailType.REGISTERED);
 
-  revalidatePath("/dashboard");
+  // revalidatePath("/bitbattles-dashboard");
 
   return {
     error: "",
@@ -116,7 +116,9 @@ export const updateTeam = async (teamId: string): Promise<SupabaseResponse> => {
 
   if (error) return { error: error.message, success: false };
   await send(data[0], EmailType.VERIFIED);
-  revalidatePath("/dashboard");
+
+  // revalidatePath("/bitbattles-dashboard");
+
   return {
     error: "",
     success: true,

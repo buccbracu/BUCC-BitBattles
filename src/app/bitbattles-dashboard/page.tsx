@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -9,9 +11,30 @@ import {
 import { CheckCircle, Users } from "lucide-react";
 import { getTeams } from "@/helper/actions";
 import TeamCard from "@/components/common/TeamCard";
+import { useEffect, useState } from "react";
+import { Team } from "@/types";
 
-export default async function ContestDashboard() {
-  const { payload: teams = [] } = await getTeams();
+export default function ContestDashboard() {
+  const [loading, setLoading] = useState(true);
+  const [teams, setTeams] = useState<Team[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { payload } = await getTeams();
+      console.log(payload);
+
+      setTeams(payload as Team[]);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  if (loading)
+    return (
+      <div className="w-[100vw] h-[100vh] flex items-center justify-center">
+        <h2>Loading...</h2>
+      </div>
+    );
 
   return (
     <div className="container mx-auto p-4 sm:p-6 space-y-6 sm:space-y-8 max-sm:px-2">

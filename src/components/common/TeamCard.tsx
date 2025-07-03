@@ -35,9 +35,10 @@ interface Props {
 
 export default function TeamCard({ team }: Props) {
   const [pin, setPin] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
+  const [verified, setVerified] = useState(team.paymentVerified);
 
   const handleVerifyTeam = async () => {
     setOpen(true);
@@ -46,19 +47,22 @@ export default function TeamCard({ team }: Props) {
   const handleLogin = async () => {
     const success = await login(pin);
     if (success) {
-      setLoggedIn(true);
+      // setLoggedIn(true);
       setOpen(false);
       setError(false);
 
       toast.info("Verifying...", { icon: <Loader /> });
       const { error } = await updateTeam(team.id);
-      if (error)
+      if (error) {
         return toast.error(error, {
           description: "Something went wrong while verifying the payment!",
         });
+      }
+
       toast.success("Team Verified", {
         description: "Payment has been verified and team is now approved.",
       });
+      setVerified(true);
       return;
     }
 
@@ -223,14 +227,12 @@ export default function TeamCard({ team }: Props) {
               <Button
                 onClick={() => handleVerifyTeam()}
                 size="sm"
-                disabled={team.paymentVerified}
+                disabled={verified}
                 className={`flex-1 ${
-                  team.paymentVerified
-                    ? "bg-green-600"
-                    : "bg-blue-600 hover:bg-blue-700"
+                  verified ? "bg-green-600" : "bg-blue-600 hover:bg-blue-700"
                 }`}
               >
-                {team.paymentVerified ? (
+                {verified ? (
                   <>
                     <CheckCircle className="h-4 w-4 mr-1" />
                     Verified
@@ -264,14 +266,13 @@ export default function TeamCard({ team }: Props) {
             </div>
             <div className="text-center">
               <Dialog>
-                {loggedIn && (
-                  <DialogTrigger asChild>
-                    <Button variant="outline" size="sm">
-                      <Eye className="h-4 w-4 mr-1" />
-                      Details
-                    </Button>
-                  </DialogTrigger>
-                )}
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <Eye className="h-4 w-4 mr-1" />
+                    Details
+                  </Button>
+                </DialogTrigger>
+
                 <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle>{team.teamName} - Team Details</DialogTitle>
@@ -376,14 +377,12 @@ export default function TeamCard({ team }: Props) {
               <Button
                 onClick={() => handleVerifyTeam()}
                 size="sm"
-                disabled={team.paymentVerified}
+                disabled={verified}
                 className={
-                  team.paymentVerified
-                    ? "bg-green-600"
-                    : "bg-blue-600 hover:bg-blue-700"
+                  verified ? "bg-green-600" : "bg-blue-600 hover:bg-blue-700"
                 }
               >
-                {team.paymentVerified ? (
+                {verified ? (
                   <>
                     <CheckCircle className="h-4 w-4 mr-1" />
                     Verified
