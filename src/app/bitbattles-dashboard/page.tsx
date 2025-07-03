@@ -32,7 +32,7 @@ export default function ContestDashboard() {
       setTeams(payload as Team[]);
       setLoading(false);
     };
-    loggedIn && fetchData();
+    if (loggedIn) fetchData();
   }, [loggedIn]);
 
   const handleLogin = async () => {
