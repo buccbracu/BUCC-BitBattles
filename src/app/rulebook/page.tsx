@@ -134,8 +134,8 @@ export default function RulesPage() {
               <li>
                 <strong>Registration Fee:</strong>
                 <ul>
-                  <li>Preliminary Round: BDT 498/=</li>
-                  <li>Final Round (for qualified teams): BDT 1000/=</li>
+                  <li>Preliminary Round: BDT 498/=(Per Team)</li>
+                  <li>Final Round (for qualified teams): BDT 1000/=(Per Team)</li>
                 </ul>
               </li>
               <li>
