@@ -24,11 +24,11 @@ export async function send(team: Partial<GetTeamDTO>, type: EmailType) {
 
   switch (type) {
     case EmailType.REGISTERED:
-      emailConfig.subject = "Registration Successful - Bit Battles";
+      emailConfig.subject = "BUCC Bit Battles Registration Confirmation Mail";
       emailConfig.html = registeredMail(team);
       break;
     case EmailType.VERIFIED:
-      emailConfig.subject = "Verified - Bit Battles";
+      emailConfig.subject = "BUCC Bit Battles Payment Verification Mail";
       emailConfig.html = verifiedMail(team);
       break;
 
