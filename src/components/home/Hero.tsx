@@ -234,7 +234,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div ref={buttonContainerRef} className="cta-container">
             <Link
-              href="/registe"
+              href="/registration"
               target="_blank"
               rel="noopener noreferrer"
               ref={registerBtnRef}
