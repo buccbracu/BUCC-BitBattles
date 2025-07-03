@@ -23,6 +23,7 @@ export default function ContestDashboard() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loggedIn, setloggedIn] = useState(false);
   const [pin, setPin] = useState("");
+  const [loginLoading, setloginLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,13 +37,16 @@ export default function ContestDashboard() {
   }, [loggedIn]);
 
   const handleLogin = async () => {
+    setloginLoading(true);
     const success = await login(pin);
     if (success) {
       setloggedIn(success);
+      setloginLoading(false);
       return;
     }
 
     setloggedIn(false);
+    setloginLoading(false);
     toast.error("Login failed!!");
   };
 
@@ -95,9 +99,9 @@ export default function ContestDashboard() {
                 <Button
                   onClick={handleLogin}
                   className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white"
-                  disabled={loggedIn}
+                  disabled={loginLoading}
                 >
-                  {loggedIn ? (
+                  {loginLoading ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                       Logging in...
