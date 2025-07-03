@@ -78,7 +78,7 @@ ${team.members
         : ""
     }
     
-    <p><img data-emoji="✅" class="an1" alt="✅" aria-label="✅" draggable="false" src="https://fonts.gstatic.com/s/e/notoemoji/16.0/2705/16.png" loading="lazy">&nbsp;<strong>What's Next?</strong></p>
+    <p>✅&nbsp;<strong>What's Next?</strong></p>
     <ul>
       <li style="margin-left:15px"><p>You will soon receive further instructions regarding the competition schedule, rules, and any preparatory materials.</p></li>
       <li style="margin-left:15px"><p>Keep an eye on your email and our&nbsp;<b><a href="https://www.facebook.com/BRACUCC/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://www.facebook.com/BRACUCC/&amp;source=gmail&amp;ust=1751654874644000&amp;usg=AOvVaw3RspXKsi1WUQE4u_Ybf__o">official Facebook Page</a></b>&nbsp;for all updates.</p></li>
