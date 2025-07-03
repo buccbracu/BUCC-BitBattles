@@ -20,7 +20,7 @@ export const registeredMail = (team: Partial<GetTeamDTO>) => {
           ? team.members
               .slice(1)
               .map(
-                (member, i) =>
+                (member) =>
                   `• ${member.name} - ${member.studentId} - ${member.gsuiteEmail}</br>`
               )
               .join("\n")
@@ -69,7 +69,7 @@ ${team.members[0].name} – ${team.members[0].studentId} – ${team.members[0].g
         ? team.members
             .slice(1)
             .map(
-              (member, i) =>
+              (member) =>
                 `• ${member.name} - ${member.studentId} - ${member.gsuiteEmail}</br>`
             )
             .join("\n")
@@ -95,43 +95,3 @@ ${team.members[0].name} – ${team.members[0].studentId} – ${team.members[0].g
 
   </div>`;
 };
-
-`
-
-
-
-
-
-
-
-
-
-
-
-
-Here are your verified team details for your records:
-
-Team Name:
-[Team Name]
-
-Team Leader:
-[Leader Name] – [Student ID] – [G-suite]
-
-Team Members:
-• [Member 1 Name] – [Student ID] – [G-suite]
-• [Member 2 Name] – [Student ID] – [G-suite]
-
-✅ What’s Next?
-
-You will soon receive further instructions regarding the competition schedule, rules, and any other materials you might need.
-
-Keep an eye on your email and our official Facebook Page for all updates.
-
-Make sure all team members are ready on the event day.
-
-If you notice any errors in the details above, please "Reply All" to this email immediately so we can update our records.
-
-We’re thrilled to have you competing in BitBattles and can’t wait to see your team in action.
-
-Get ready. Get set. Code!
-`;
