@@ -43,7 +43,7 @@
 
 /* Question styling */
 .faq-question {
-  padding: 22px 28px;
+  padding: 22px 60px 22px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,7 +56,7 @@
   color: #EFDA9B;
   margin: 0;
   transition: color 0.3s ease;
-  padding-right: 40px;
+  padding-right: 20px;
   line-height: 1.5;
 }
 
@@ -75,7 +75,7 @@
   color: #EFDA9B;
   transition: all 0.4s ease;
   position: absolute;
-  right: 28px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -246,18 +246,18 @@
 
 @media (max-width: 768px) {
   .faq-question {
-    padding: 20px 25px;
+    padding: 20px 50px 20px 20px;
   }
   
   .faq-icon {
+    right: 15px;
     width: 28px;
     height: 28px;
-    right: 25px;
   }
   
   .faq-question h3 {
-    font-size: 1.1rem;
-    padding-right: 35px;
+    font-size: 1.2rem;
+    padding-right: 15px;
   }
   
   .faq-item.active .faq-answer {
@@ -293,19 +293,18 @@
   }
   
   .faq-question {
-    padding: 18px 20px;
+    padding: 18px 45px 18px 15px;
   }
   
   .faq-icon {
-    width: 24px;
-    height: 24px;
-    right: 20px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
   }
   
   .faq-question h3 {
-    font-size: 1rem;
-    padding-right: 30px;
-    line-height: 1.4;
+    font-size: 1.1rem;
+    padding-right: 10px;
   }
   
   .faq-item.active .faq-answer {

@@ -8,13 +8,49 @@
   padding: 120px 5% 100px;
 }
 
+.registration-section h2 {
+  font-family: 'Kragx', sans-serif;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #EFDA9B;
+  background: linear-gradient(135deg, #ffe066 10%, #e6b800 45%, #cc9900 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #7a5c13;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .registration-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
-  margin: 40px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.registration-info {
+  flex: 1;
+  max-width: 600px;
+}
+
+.registration-info p {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #EFDA9B;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+.registration-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .registration-details {
@@ -309,6 +345,16 @@
     padding: 100px 5% 80px;
   }
 
+  .registration-section h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+  }
+
+  .registration-info p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
   .registration-content {
     margin-top: 30px;
   }
@@ -353,6 +399,27 @@
 }
 
 @media (max-width: 768px) {
+  .registration-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 10px;
+  }
+
+  .registration-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .registration-info p {
+    text-align: center;
+  }
+
+  .registration-buttons {
+    justify-content: center;
+  }
+
   .registration-details {
     padding: 30px;
   }
@@ -387,61 +454,38 @@
 @media (max-width: 480px) {
   .registration-section {
     padding: 80px 5% 60px;
+    align-items: flex-start;
   }
 
-  .registration-content {
-    margin-top: 20px;
-  }
-
-  .registration-details {
-    padding: 25px 20px;
-  }
-
-  .registration-details h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-  }
-
-  .registration-info-container {
-    gap: 20px;
+  .registration-section h2 {
+    font-size: 1.45rem;
     margin-bottom: 30px;
+    letter-spacing: -0.5px;
+    text-align: left;
+    padding-left: 1px;
+    -webkit-text-stroke: 0.5px #7a5c13;
+    margin-left: 0;
+    width: auto;
+    max-width: 95%;
   }
 
-  .eligibility-info,
-  .important-dates {
-    padding: 20px;
-  }
-
-  .eligibility-info h4,
-  .important-dates h4 {
-    font-size: 1.1rem;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
-  }
-
-  .eligibility-info h4::after,
-  .important-dates h4::after {
-    width: 60px;
-  }
-
-  .eligibility-info li,
-  .important-dates li {
+  .registration-info p {
     font-size: 0.95rem;
-    margin-bottom: 10px;
-    padding-left: 25px;
+    line-height: 1.6;
   }
 
-  .important-dates li {
-    padding-left: 15px;
-    padding-bottom: 15px;
+  .registration-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
+}
 
-  .registration-button {
-    padding: 15px 25px;
-    font-size: 1rem;
-  }
-
-  .registration-button i {
-    font-size: 1.1rem;
+@media (max-width: 360px) {
+  .registration-section h2 {
+    font-size: 1.35rem;
+    letter-spacing: -0.5px;
+    padding-left: 1px;
+    max-width: 92%;
   }
 }

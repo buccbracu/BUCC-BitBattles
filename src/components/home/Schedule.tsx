@@ -142,7 +142,11 @@ const Schedule = () => {
           <div className="timeline-line"></div>
 
           {timelineEvents.map((event, index) => (
-            <div className="timeline-event" key={index}>
+            <div 
+              className="timeline-event" 
+              key={index}
+              data-phase={event.phase}
+            >
               <div className="timeline-marker">
                 <div className="timeline-icon">{event.icon}</div>
               </div>

@@ -126,10 +126,10 @@ const Registration = () => {
               <h4>Registration Fees:</h4>
               <ul>
                 <li>
-                  <span>Preliminary Round:</span> BDT 498/=
+                  <span>Preliminary Round:</span> BDT 498/= (per team)
                 </li>
                 <li>
-                  <span>Final Round (for qualified teams):</span> BDT 1000/=
+                  <span>Final Round (for qualified teams):</span> BDT 1000/= (per team)
                 </li>
               </ul>
             </div>

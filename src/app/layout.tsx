@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
-import { Lora } from "next/font/google";
+import { Cinzel, Lora } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import localFont from 'next/font/local';
 
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
+});
+
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+});
+
+const kragx = localFont({
+  src: '../../public/kragx.otf',
+  variable: '--font-kragx',
 });
 
 export const metadata: Metadata = {
@@ -20,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} antialiased`}>
+      <body className={`${lora.variable} ${cinzel.variable} ${kragx.variable} antialiased`}>
         {children}
         <Toaster richColors />
       </body>
