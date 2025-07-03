@@ -23,6 +23,8 @@ import {
   Trophy,
   Zap,
   Code2,
+  Home,
+  BookOpen,
 } from "lucide-react";
 import { toast } from "sonner";
 import { addTeam } from "@/helper/actions";
@@ -38,6 +40,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import "../../components/home/Registration.css";
+import Link from "next/link";
 
 const departments = [
   { name: "Anthropology", initial: "ANT" },
@@ -430,8 +433,26 @@ export default function ContestRegistration() {
             </div>
           </div>
 
+          <div className="flex gap-3 justify-center my-8">
+            <Link
+              href={"/"}
+              className=" cursor-pointer flex items-center justify-center gap-1 border rounded-sm border-amber-600/50 text-amber-300 hover:bg-amber-600/10 hover:border-amber-500 bg-transparent p-2 px-4"
+            >
+              <Home className="h-4 w-4 mr-2" />
+              Homepage
+            </Link>
+            <Link
+              href={"/rules"}
+              className="cursor-pointer flex items-center justify-center gap-1 border  rounded-sm border-amber-600/50 text-amber-300 hover:bg-amber-600/10 hover:border-amber-500 bg-transparent p-2 px-4"
+            >
+              <BookOpen className="h-4 w-4 mr-2" />
+              Rulebook
+            </Link>
+          </div>
+
           <main className="space-y-8">
             {/* Team Information */}
+
             <Card className="bg-amber-950/20 border-amber-800/30 backdrop-blur-sm shadow-2xl">
               <CardHeader className="border-b border-amber-800/30">
                 <CardTitle className="flex items-center gap-2 text-amber-100">
@@ -522,11 +543,19 @@ export default function ContestRegistration() {
                         <Input
                           value={member.studentId}
                           onChange={(e) => {
-                            updateMember(
-                              member.id,
-                              "studentId",
-                              e.target.value
-                            );
+                            console.log(e.target.value);
+
+                            if (e.target.value === "") {
+                              updateMember(member.id, "studentId", "");
+                            }
+
+                            if (/^\d+$/.test(e.target.value)) {
+                              updateMember(
+                                member.id,
+                                "studentId",
+                                e.target.value
+                              );
+                            }
                           }}
                           placeholder="XXXXXXXX"
                           required
