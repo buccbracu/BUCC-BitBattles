@@ -1,92 +1,47 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+import React from "react";
 import "./page.css";
-import Link from "next/link";
 
 export default function RulesPage() {
-  const pageRef = useRef(null);
-  const titleRef = useRef(null);
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-    // Set document title
-    document.title = "Rules & Regulations - BUCC Bit Battles";
-
-    // Create animation timeline
-    const tl = gsap.timeline();
-
-    // Animate title with fade-in
-    tl.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8 }
-    );
-
-    // Animate content with fade-in effect
-    tl.fromTo(
-      contentRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      },
-      "-=0.4"
-    );
-
-    return () => {
-      // Clean up animations
-      tl.kill();
-    };
-  }, []);
-
   return (
-    <div className="rules-page" ref={pageRef}>
-      <div className="rules-container">
-        <div className="rules-header">
-          <h1 ref={titleRef}>BUCC Bit Battles: Official Rule Book</h1>
-          <p className="rules-version">Final Version: 01 July 2025</p>
-          <div className="rules-organizers">
-            <p>
-              <strong>Organized by:</strong> BRAC University Computer Club
-              (BUCC)
-            </p>
-            <p>
-              <strong>Powered by:</strong> Phitron
-            </p>
-            <p>
-              <strong>Supported by:</strong> Department of Computer Science and
-              Engineering (CSE), BRAC University
-            </p>
-          </div>
-        </div>
+    <div className="rules-page">
+      <div className="container">
+        <div className="rules-content">
+          <h1>BUCC Bit Battles: Official Rule Book</h1>
+          <p className="rules-meta">
+            <strong>Final Version:</strong> 03 July 2025
+            <br />
+            <strong>Organized by:</strong> BRAC University Computer Club (BUCC)
+            <br />
+            <strong>Powered by:</strong> Phitron
+            <br />
+            <strong>Supported by:</strong> Department of Computer Science and
+            Engineering (CSE), BRAC University
+          </p>
 
-        <div className="rules-content" ref={contentRef}>
           <section className="rule-section">
             <h2>1. Introduction</h2>
             <p>
               BUCC Bit Battles is a multi-tiered intra-university competitive
-              programming contest designed for the students of BRAC University.
-              This event follows a hybrid format, beginning with an online
-              preliminary round and culminating in an onsite final round. The
-              contest draws inspiration from ICPC practices and aims to foster
-              teamwork, algorithmic thinking, and problem-solving excellence
-              among BRACU students.
+              programming contest designed for the students of BRAC University. This
+              event follows a hybrid format, beginning with an online preliminary
+              round and culminating in an onsite final round. The contest draws
+              inspiration from ICPC practices and aims to foster teamwork,
+              algorithmic thinking, and problem-solving excellence among BRACU
+              students.
             </p>
           </section>
 
           <section className="rule-section">
             <h2>2. Mission</h2>
             <p>
-              The mission of BUCC Bit Battles is to create a platform for
-              students to test and demonstrate their programming capabilities in
-              a structured, competitive, and team-based environment. The contest
-              promotes collaboration, fair play, and technical excellence,
-              nurturing future problem solvers and competitive programmers
-              within the university.
+              The mission of BUCC Bit Battles is to create a platform for students
+              to test and demonstrate their programming capabilities in a
+              structured, competitive, and team-based environment. The contest
+              promotes collaboration, fair play, and technical excellence, nurturing
+              future problem solvers and competitive programmers within the
+              university.
             </p>
           </section>
 
@@ -103,18 +58,18 @@ export default function RulesPage() {
                   <strong>Mode:</strong> Online
                 </li>
                 <li>
-                  <strong>Problems:</strong> 5
+                  <strong>Problems:</strong> 4–6
                 </li>
                 <li>
-                  <strong>Duration:</strong> 1 hour
+                  <strong>Duration:</strong> 2 Hours
                 </li>
                 <li>
-                  <strong>Purpose:</strong> Ranking and selection of
-                  top-performing teams
+                  <strong>Purpose:</strong> Ranking and selection of top-performing
+                  teams
                 </li>
                 <li>
-                  <strong>Advancement:</strong> Top 100 teams will be selected
-                  for the onsite Final Round
+                  <strong>Advancement:</strong> Top 100 teams will be selected for
+                  the onsite Final Round
                 </li>
               </ul>
             </div>
@@ -132,15 +87,14 @@ export default function RulesPage() {
                   <strong>Mode:</strong> Onsite
                 </li>
                 <li>
-                  <strong>Problems:</strong> 8
+                  <strong>Problems:</strong> 6–10
                 </li>
                 <li>
                   <strong>Duration:</strong> 4 hours
                 </li>
                 <li>
-                  <strong>Environment:</strong> All teams will compete on
-                  machines provided by the organizers with a uniform computing
-                  environment.
+                  <strong>Environment:</strong> All teams will compete on machines
+                  provided by the organizers with a uniform computing environment.
                 </li>
               </ul>
             </div>
@@ -150,18 +104,22 @@ export default function RulesPage() {
             <h2>4. Eligibility Criteria</h2>
             <ul>
               <li>
-                All participants must be currently enrolled undergraduate
-                students of BRAC University.
+                All participants must be currently enrolled undergraduate students
+                of BRAC University.
               </li>
               <li>Each team must consist of 1 to 3 members.</li>
               <li>A student may participate in only one team.</li>
               <li>
-                Team composition must be fixed once the preliminary round
-                begins; no substitutions allowed afterward.
+                Team composition must be fixed once the preliminary round begins; no
+                substitutions allowed afterward.
               </li>
               <li>
-                A designated team leader must act as the official point of
-                contact.
+                A designated team leader must act as the official point of contact.
+              </li>
+              <li>
+                Any contestant who has ranked above 60% in any university-level
+                national programming competition will not be eligible to participate
+                in this contest.
               </li>
             </ul>
           </section>
@@ -176,8 +134,8 @@ export default function RulesPage() {
               <li>
                 <strong>Registration Fee:</strong>
                 <ul>
-                  <li>Preliminary Round: BDT 500</li>
-                  <li>Final Round (for qualified teams): BDT 1000</li>
+                  <li>Preliminary Round: BDT 498/=(Per Team)</li>
+                  <li>Final Round (for qualified teams): BDT 1000/=(Per Team)</li>
                 </ul>
               </li>
               <li>
@@ -191,16 +149,17 @@ export default function RulesPage() {
             <h2>6. Programming Environment</h2>
             <ul>
               <li>
-                <strong>Languages Supported:</strong> C, C++, Java, Python
-                (subject to platform capabilities)
+                <strong>Languages Supported:</strong> C, C++, Java, Python (subject
+                to platform capabilities)
               </li>
               <li>
-                The contest system and environment details (IDE/editor, OS,
-                compilers, etc.) will be shared in advance.
+                Each team will be provided with a single computer. The contest
+                system and environment details (IDE/editor, OS, compilers, etc.)
+                will be shared in advance.
               </li>
               <li>
-                Participants are not allowed to use any other tools, plugins, or
-                compilers.
+                Participants will not be allowed to use any personal electronic
+                devices.
               </li>
             </ul>
           </section>
@@ -209,16 +168,16 @@ export default function RulesPage() {
             <h2>7. Contest Rules</h2>
             <ul>
               <li>
-                <strong>Fair Play:</strong> All participants are expected to
-                uphold integrity and good sportsmanship.
+                <strong>Fair Play:</strong> All participants are expected to uphold
+                integrity and good sportsmanship.
               </li>
               <li>
-                <strong>Plagiarism or Code Sharing:</strong> Zero tolerance.
-                Teams found guilty will be disqualified immediately.
+                <strong>Plagiarism or Code Sharing:</strong> Zero tolerance. Teams
+                found guilty will be disqualified immediately.
               </li>
               <li>
-                <strong>AI Tools:</strong> Use of AI-based code generators
-                (e.g., ChatGPT, Copilot) is strictly prohibited.
+                <strong>AI Tools:</strong> Use of AI-based code generators (e.g.,
+                ChatGPT, Copilot) is strictly prohibited.
               </li>
               <li>
                 <strong>External Help:</strong> Contestants may not use online
@@ -226,8 +185,8 @@ export default function RulesPage() {
               </li>
               <li>
                 Each team may bring a printed code template of up to 25 pages.
-                Templates may be handwritten or typed. No digital, electronic,
-                or internet-enabled materials are allowed during the contest.
+                Templates may be handwritten or typed. No digital, electronic, or
+                internet-enabled materials are allowed during the contest.
               </li>
             </ul>
           </section>
@@ -236,7 +195,10 @@ export default function RulesPage() {
             <h2>8. Conduct and Disqualification</h2>
             <p>Teams or individuals may be disqualified for:</p>
             <ul>
-              <li>Submitting identical code as another team</li>
+              <li>
+                Submitting identical code as another team or as found on any
+                internet platform
+              </li>
               <li>Attempting to disrupt contest infrastructure</li>
               <li>Unauthorized communication with outsiders</li>
               <li>Use of prohibited resources or software</li>
@@ -268,13 +230,10 @@ export default function RulesPage() {
               <li>1st Runner-up</li>
               <li>2nd Runner-up</li>
               <li>Honorable Mention(s)</li>
+              <li>First team to solve each problem will get a prize</li>
               <li>
                 All participants in the final round will receive digital
                 participation certificates.
-              </li>
-              <li>
-                Special awards (e.g., First Problem Solver) may be introduced at
-                the discretion of the organizing body.
               </li>
             </ul>
           </section>
@@ -288,10 +247,17 @@ export default function RulesPage() {
                 <a href="mailto:bucc@g.bracu.ac.bd">bucc@g.bracu.ac.bd</a>
               </li>
               <li>
-                <strong>Discord Server:</strong> Link to be shared later
+                <strong>Discord Server:</strong>{" "}
+                <a
+                  href="https://discord.gg/Jxc7p8esCK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://discord.gg/Jxc7p8esCK
+                </a>
               </li>
               <li>
-                <strong>Phone:</strong> +8801756020067 (President - Istiak Zaman
+                <strong>Phone:</strong> +880 1756-020067 (President - Istiak Zaman
                 Shuvo)
               </li>
             </ul>
@@ -312,15 +278,30 @@ export default function RulesPage() {
           </section>
 
           <section className="rule-section">
-            <h2>13. Final Notes</h2>
+            <h2>13. Judge Panel</h2>
+            <ul>
+              <li>
+                Faculty members of Computer Science and Engineering, BRAC
+                University.
+              </li>
+              <li>Instructors of Phitron.</li>
+              <li>
+                Senior programming contestants (current and alumni) of BRAC
+                University.
+              </li>
+            </ul>
+          </section>
+
+          <section className="rule-section">
+            <h2>14. Final Notes</h2>
             <ul>
               <li>
                 The organizing committee reserves the right to amend or update
                 these rules if necessary.
               </li>
               <li>
-                The decision of the judge panel will be considered as the final
-                and irreversible decision regarding the contest result.
+                The decision of the judge panel will be considered as the final and
+                irreversible decision regarding the contest result.
               </li>
               <li>
                 Any such changes will be communicated in advance via official
@@ -328,12 +309,6 @@ export default function RulesPage() {
               </li>
             </ul>
           </section>
-        </div>
-
-        <div className="rules-footer">
-          <Link href="/" className="back-button">
-            Back to Home
-          </Link>
         </div>
       </div>
     </div>

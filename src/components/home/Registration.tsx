@@ -110,7 +110,7 @@ const Registration = () => {
                 <h4>Important Dates:</h4>
                 <ul>
                   <li>
-                    <span>Registration Deadline:</span> 8th July, 2025
+                    <span>Registration Deadline:</span> 9th July, 2025
                   </li>
                   <li>
                     <span>Online Preliminary:</span> 11th July, 2025

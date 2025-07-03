@@ -76,8 +76,7 @@ const Prizes = () => {
       rewards: [
         "Cash Prize: 2,000 BDT",
         "Winner Certificate",
-        "Special Recognition",
-        "Hackathon Priority",
+        "Special Recognition"
       ],
     },
   ];

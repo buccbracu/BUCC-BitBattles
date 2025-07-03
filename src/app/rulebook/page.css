@@ -1,0 +1,165 @@
+/* Import Google Fonts for typography */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Trajan+Pro:wght@400;700&display=swap");
+
+.rules-page {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+    url("/background.webm") center/cover;
+  color: #efda9b;
+  padding: 60px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.rules-content {
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rules-content h1 {
+  font-family: "Kragx", sans-serif;
+  font-size: 2.5rem;
+  color: #efda9b;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ffe066 10%, #e6b800 45%, #cc9900 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #7a5c13;
+}
+
+.rules-meta {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(160, 105, 55, 0.5);
+  font-family: "Cinzel", serif;
+}
+
+.rule-section {
+  margin-bottom: 40px;
+}
+
+.rule-section:last-child {
+  margin-bottom: 0;
+}
+
+.rule-section h2 {
+  font-family: "Kragx", sans-serif;
+  font-size: 1.8rem;
+  color: #efda9b;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(160, 105, 55, 0.5);
+}
+
+.rule-section h3 {
+  font-family: "Cinzel", serif;
+  font-size: 1.4rem;
+  color: #efda9b;
+  margin-bottom: 15px;
+}
+
+.rule-section p {
+  font-family: "Cinzel", serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.rule-section ul {
+  list-style: none;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.rule-section ul li {
+  font-family: "Cinzel", serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.rule-section ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #a06937;
+}
+
+.rule-section ul ul {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.rule-section a {
+  color: #efda9b;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.rule-section a:hover {
+  color: #a06937;
+}
+
+@media (max-width: 768px) {
+  .rules-page {
+    padding: 40px 0;
+  }
+
+  .rules-content {
+    padding: 30px;
+  }
+
+  .rules-content h1 {
+    font-size: 2rem;
+  }
+
+  .rule-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .rule-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .rule-section p,
+  .rule-section ul li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rules-page {
+    padding: 30px 0;
+  }
+
+  .rules-content {
+    padding: 20px;
+  }
+
+  .rules-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .rule-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .rule-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .rule-section p,
+  .rule-section ul li {
+    font-size: 0.95rem;
+  }
+}
