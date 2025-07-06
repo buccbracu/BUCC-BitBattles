@@ -54,7 +54,7 @@ const Prizes = () => {
       place: "First Team to Solve",
       icon: <Bolt className="text-black" />,
       rewards: [
-        "Cash Prize: 10 × 1,000 BDT",
+        "Cash Prize: 10,000 BDT",
         "Achievement Certificate",
         "BUCC Hall of Fame",
         "Special Recognition",
