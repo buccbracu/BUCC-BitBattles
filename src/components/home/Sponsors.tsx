@@ -17,12 +17,14 @@ const Sponsors = () => {
       name: "Phitron",
       category: "Powered by",
       logoUrl: "/sponsor logo.png",
+      displayMode: "stacked", // Add this to indicate stacked display
     },
     {
       name: "BRAC University",
       category: "Supported by",
       description: "Department of Computer Science and Engineering",
       logoUrl: "/brac-university-logo.png",
+      displayMode: "stacked", // Apply the stacked layout to this sponsor as well
     },
   ];
 
@@ -77,7 +79,14 @@ const Sponsors = () => {
 
         <div className="sponsors-container" ref={sponsorsRef}>
           {sponsorsData.map((sponsor, index) => (
-            <div className="sponsor-card" key={index}>
+            <div className={`sponsor-card ${sponsor.displayMode === "stacked" ? "stacked-layout" : ""}`} key={index}>
+              {/* Show category on top for stacked layout */}
+              {sponsor.displayMode === "stacked" && (
+                <div className="sponsor-info sponsor-info-top">
+                  <p className="sponsor-category">{sponsor.category}</p>
+                </div>
+              )}
+              
               <div className="sponsor-logo-container larger-logo">
                 <Image
                   width={1000}
@@ -87,9 +96,11 @@ const Sponsors = () => {
                   className="sponsor-logo"
                 />
               </div>
+              
               <div className="sponsor-info">
                 <h3 className="sponsor-name">{sponsor.name}</h3>
-                <p className="sponsor-category">{sponsor.category}</p>
+                {/* Show category here only for non-stacked layouts */}
+                {!sponsor.displayMode && <p className="sponsor-category">{sponsor.category}</p>}
                 {sponsor.description && (
                   <p className="sponsor-description">{sponsor.description}</p>
                 )}

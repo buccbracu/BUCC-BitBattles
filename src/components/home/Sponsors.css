@@ -36,6 +36,25 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Stacked layout for powered by */
+.stacked-layout {
+  padding-top: 15px;
+}
+
+.sponsor-info-top {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.stacked-layout .sponsor-logo-container {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.stacked-layout .sponsor-info {
+  margin-top: 5px;
+}
+
 .sponsor-card::before {
   content: '';
   position: absolute;
@@ -120,6 +139,7 @@
 }
 
 /* Special styling for different sponsor categories */
+.sponsor-info-top .sponsor-category,
 .sponsor-card:nth-child(1) .sponsor-category {
   color: #ffe066; /* Powered by - gold */
 }

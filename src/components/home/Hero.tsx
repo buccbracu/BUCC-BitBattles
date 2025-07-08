@@ -21,7 +21,7 @@ const Hero = () => {
   const registerBtnRef = useRef(null);
   const websiteBtnRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   useEffect(() => {
     // Set document title
@@ -36,7 +36,10 @@ const Hero = () => {
 
       // Add loading event listener
       video.addEventListener("loadeddata", () => {
-        setVideoLoaded(true);
+        // Add a small delay before showing video to ensure smooth transition
+        setTimeout(() => {
+          setVideoPlaying(true);
+        }, 300);
       });
 
       // Try to play with both methods
@@ -54,6 +57,7 @@ const Hero = () => {
             // Try to add click event to start video on user interaction
             const playVideo = () => {
               video.play();
+              setVideoPlaying(true);
               document.body.removeEventListener("click", playVideo);
             };
             document.body.addEventListener("click", playVideo);
@@ -141,7 +145,7 @@ const Hero = () => {
       // Clean up event listeners
       if (video) {
         video.removeEventListener("loadeddata", () => {
-          setVideoLoaded(true);
+          setVideoPlaying(true);
         });
       }
     };
@@ -156,20 +160,36 @@ const Hero = () => {
 
   return (
     <div className="hero-container">
-      {/* Video background */}
+      {/* Video background with SVG preloader */}
       <div className="video-background opacity-100">
+        {/* SVG preloader - shown until video is loaded and playing */}
+        <div 
+          className={`svg-preloader ${videoPlaying ? 'svg-hidden' : 'svg-visible'}`}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 2,
+            backgroundImage: 'url("/background.svg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transition: 'opacity 0.8s ease-in-out'
+          }}
+        />
+
         <video
           width="1920"
           height="1080"
-          controls
-          preload="none"
+          controls={false}
+          preload="auto"
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          poster="/background.webm"
-          className={videoLoaded ? "video-loaded" : ""}
+          className={videoPlaying ? "video-loaded" : ""}
         >
           <source src="/background.webm" type="video/webm" />
           Your browser does not support the video tag.
@@ -221,13 +241,15 @@ const Hero = () => {
           <div ref={poweredByRef} className="powered-by">
             <span className="powered-text">Powered by</span>
             <div className="phaetron-logo">
-              <Image
-                width={1000}
-                height={1000}
-                src={"/sponsor logo.png"}
-                alt="Phitron"
-                className="phaetron-logo-img"
-              />
+              <div className="logo-background">
+                <Image
+                  width={1000}
+                  height={1000}
+                  src={"/sponsor logo.png"}
+                  alt="Phitron"
+                  className="phaetron-logo-img"
+                />
+              </div>
             </div>
           </div>
 
