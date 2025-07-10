@@ -63,7 +63,7 @@ const departments = [
   { name: "Physics", initial: "PHY" },
 ].map((el) => el.name);
 
-const registrationOff = false;
+const registrationOff = true;
 
 export default function ContestRegistration() {
   const [teamName, setTeamName] = useState("");
