@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { CheckCircle, Lock, Shield, Users } from "lucide-react";
+import { CheckCircle, Download, Lock, Shield, Users } from "lucide-react";
 import { getTeams, login } from "@/helper/actions";
 import TeamCard from "@/components/common/TeamCard";
 import { useEffect, useState } from "react";
@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import DownadButton from "@/components/common/DownloadButton";
 
 export default function ContestDashboard() {
   const [loading, setLoading] = useState(true);
@@ -137,6 +138,15 @@ export default function ContestDashboard() {
           </p>
         </div>
         <div className="flex gap-4">
+          <Card className="p-4">
+            {/* <Button
+              variant={"outline"}
+              className="flex items-center gap-2 flex-col  h-full"
+            >
+              <Download className="h-8 w-8 text-blue-500" />
+            </Button> */}
+            <DownadButton />
+          </Card>
           <Card className="p-4">
             <div className="flex items-center gap-2">
               <Users className="h-5 w-5 text-blue-500" />
