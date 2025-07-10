@@ -25,6 +25,8 @@ import {
   Code2,
   Home,
   BookOpen,
+  Clock,
+  AlertCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 import { addTeam } from "@/helper/actions";
@@ -60,6 +62,8 @@ const departments = [
   { name: "Pharmacy", initial: "PRH" },
   { name: "Physics", initial: "PHY" },
 ].map((el) => el.name);
+
+const registrationOff = false;
 
 export default function ContestRegistration() {
   const [teamName, setTeamName] = useState("");
@@ -373,6 +377,74 @@ export default function ContestRegistration() {
 
     setIsSubmitting(false);
   };
+
+  if (registrationOff) {
+    return (
+      <div
+        className="min-h-screen py-8 px-4 flex items-center justify-center"
+        style={{ backgroundColor: "#311c11" }}
+      >
+        <div className="max-w-2xl mx-auto text-center">
+          {/* Decorative background */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-64 h-64 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-full blur-3xl"></div>
+          </div>
+
+          {/* Main Card */}
+          <Card className="bg-amber-950/20 border-amber-800/30 backdrop-blur-sm shadow-2xl relative">
+            <CardContent className="p-12 space-y-8">
+              {/* Icon */}
+              <div className="flex items-center justify-center">
+                <div className="relative">
+                  <Clock className="h-24 w-24 text-amber-500" />
+                  <div className="absolute -top-2 -right-2">
+                    <AlertCircle className="h-8 w-8 text-orange-400" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Main Message */}
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent leading-tight">
+                  Registration Closed
+                </h1>
+
+                <div className="space-y-4">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-amber-200">
+                    Intra BRAC University Programming Contest
+                  </h2>
+
+                  <p className="text-lg text-amber-200/80 leading-relaxed max-w-lg mx-auto">
+                    We're sorry, but the registration deadline for the
+                    programming contest has passed. Registration is no longer
+                    available.
+                  </p>
+                </div>
+              </div>
+
+              {/* Additional Info */}
+              <div className="bg-amber-900/30 border border-amber-700/40 rounded-lg p-6">
+                <p className="text-amber-200 text-base">
+                  <strong className="text-amber-300">Thank you</strong> to all
+                  the teams who registered on time. Stay tuned for updates about
+                  the contest and future programming competitions.
+                </p>
+              </div>
+
+              {/* Decorative line */}
+              <div className="flex items-center justify-center gap-4">
+                <div className="w-16 h-1 bg-gradient-to-r from-transparent to-amber-500 rounded-full"></div>
+                <div className="w-8 h-8 border-2 border-amber-500 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
+                </div>
+                <div className="w-16 h-1 bg-gradient-to-l from-transparent to-amber-500 rounded-full"></div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main>
