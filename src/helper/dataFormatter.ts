@@ -1,7 +1,4 @@
-// utils/flattenData.ts
-
 import { FlattenedTeam, TeamCSV } from "@/types";
-import { writeFileSync } from "fs";
 
 export function flattenTeamData(teams: TeamCSV[]): FlattenedTeam[] {
   return teams.map((team) => {
@@ -91,8 +88,6 @@ export function flattenTeamData(teams: TeamCSV[]): FlattenedTeam[] {
     return flattened;
   });
 }
-
-// utils/convertToCsv.ts
 
 export function convertToCSV(data: FlattenedTeam[]): string {
   if (data.length === 0) return "";

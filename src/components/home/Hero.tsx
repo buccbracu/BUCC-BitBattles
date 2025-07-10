@@ -49,7 +49,6 @@ const Hero = () => {
         playPromise
           .then(() => {
             // Autoplay started successfully
-            console.log("Video is playing");
           })
           .catch((error) => {
             // Autoplay was prevented
@@ -163,19 +162,21 @@ const Hero = () => {
       {/* Video background with SVG preloader */}
       <div className="video-background opacity-100">
         {/* SVG preloader - shown until video is loaded and playing */}
-        <div 
-          className={`svg-preloader ${videoPlaying ? 'svg-hidden' : 'svg-visible'}`}
+        <div
+          className={`svg-preloader ${
+            videoPlaying ? "svg-hidden" : "svg-visible"
+          }`}
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
+            width: "100%",
+            height: "100%",
             zIndex: 2,
             backgroundImage: 'url("/background.svg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transition: 'opacity 0.8s ease-in-out'
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            transition: "opacity 0.8s ease-in-out",
           }}
         />
 

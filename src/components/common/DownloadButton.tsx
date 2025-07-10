@@ -12,8 +12,6 @@ export default function DownadButton() {
     try {
       const response = await fetch("/api/teams");
 
-      console.log(response);
-
       if (!response.ok) {
         throw new Error(response.statusText);
       }

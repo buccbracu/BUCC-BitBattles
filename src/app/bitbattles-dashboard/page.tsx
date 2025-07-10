@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { CheckCircle, Download, Lock, Shield, Users } from "lucide-react";
+import { CheckCircle, Lock, Shield, Users } from "lucide-react";
 import { getTeams, login } from "@/helper/actions";
 import TeamCard from "@/components/common/TeamCard";
 import { useEffect, useState } from "react";
@@ -29,7 +29,6 @@ export default function ContestDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const { payload } = await getTeams();
-      console.log(payload);
 
       setTeams(payload as Team[]);
       setLoading(false);

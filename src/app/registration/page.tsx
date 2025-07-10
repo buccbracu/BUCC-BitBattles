@@ -215,7 +215,6 @@ export default function ContestRegistration() {
   };
 
   const checkEmailMask = (email: string) => {
-    console.log(email);
     if (/.+@.+\.[A-Za-z]+$/.test(email)) {
       return false;
     } else {
@@ -415,7 +414,7 @@ export default function ContestRegistration() {
                   </h2>
 
                   <p className="text-lg text-amber-200/80 leading-relaxed max-w-lg mx-auto">
-                    We're sorry, but the registration deadline for the
+                    We&apos;re sorry, but the registration deadline for the
                     programming contest has passed. Registration is no longer
                     available.
                   </p>
@@ -615,8 +614,6 @@ export default function ContestRegistration() {
                         <Input
                           value={member.studentId}
                           onChange={(e) => {
-                            console.log(e.target.value);
-
                             if (e.target.value === "") {
                               updateMember(member.id, "studentId", "");
                             }
