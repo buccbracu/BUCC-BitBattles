@@ -61,7 +61,7 @@ export default function RulesPage() {
                   <strong>Problems:</strong> 4–6
                 </li>
                 <li>
-                  <strong>Duration:</strong> 2 Hours
+                  <strong>Duration:</strong> 1 Hours
                 </li>
                 <li>
                   <strong>Purpose:</strong> Ranking and selection of top-performing
